@@ -112,3 +112,22 @@ vim.api.nvim_create_user_command("CreateIMSPage", function()
 	)
 	vim.fn.writefile({ "// JS fragment for " .. page_name }, js2_path)
 end, {})
+
+vim.api.nvim_create_user_command("FindIMSPath", function()
+	local ims_root =
+		vim.fn.expand("~/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp")
+
+	Snacks.picker.files({
+		cwd = ims_root,
+		confirm = function(picker, item)
+			if item then
+				picker:close()
+
+				local path = "/ims/" .. item.file
+
+				vim.fn.setreg("+", path)
+				print("Copied to clipboard: " .. path)
+			end
+		end,
+	})
+end, {})
