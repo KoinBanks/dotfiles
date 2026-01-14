@@ -27,3 +27,10 @@ vim.keymap.set(
 	"<C-r>+",
 	{ desc = "Paste from clipboard in insert mode" }
 )
+
+vim.keymap.set(
+	"n",
+	"<leader>fi",
+	":FindIMSPath<CR>",
+	{ silent = true, desc = "Find IMS path" }
+)
