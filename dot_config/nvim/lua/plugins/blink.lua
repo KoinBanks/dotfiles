@@ -44,6 +44,7 @@ return {
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 			per_filetype = {
+				javascript = { "lsp", "path", "snippets" },
 				codecompanion = { "codecompanion" },
 				["grug-far"] = {},
 			},
