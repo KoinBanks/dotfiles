@@ -23,6 +23,7 @@ return {
 				"tsx",
 				"css",
 				"scss",
+				"fish",
 				"html",
 				"vim",
 				"markdown",
