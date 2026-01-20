@@ -49,6 +49,10 @@ return {
 					address = "awos-dev.mstep",
 					label = "awos dev",
 				},
+				{
+					address = "139.129.22.177:9090",
+					label = "china prod",
+				},
 			},
 			mappings = {
 				{
