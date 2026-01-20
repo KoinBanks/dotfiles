@@ -119,7 +119,7 @@ return {
 		},
 	},
 
-	{ "nvim-mini/mini.pairs", version = false, opts = {} },
+	{ "nvim-mini/mini.pairs", version = false, opts = {}, enabled = false },
 
 	{
 		"nvim-mini/mini.comment",
