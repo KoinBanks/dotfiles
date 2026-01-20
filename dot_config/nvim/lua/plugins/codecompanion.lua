@@ -61,6 +61,7 @@ return {
 									["openai/gpt-5.2"] = {},
 									["minimax/minimax-m2.1"] = {},
 									["google/gemini-3-flash-preview"] = {},
+									["z-ai/glm-4.7"] = {},
 								},
 							},
 						},
