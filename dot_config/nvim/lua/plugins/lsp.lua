@@ -39,6 +39,7 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
 			ensure_installed = {
+				"html",
 				"lua_ls",
 				"vue_ls",
 				"vtsls",
