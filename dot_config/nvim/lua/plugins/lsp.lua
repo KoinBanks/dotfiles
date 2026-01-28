@@ -39,7 +39,7 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
 			ensure_installed = {
-				"lua_ls@3.15.0",
+				"lua_ls",
 				"vtsls",
 				"stylua",
 				"biome",
