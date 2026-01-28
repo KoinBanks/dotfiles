@@ -3,8 +3,11 @@ return {
 	desc = "Better Yank/Paste",
 	event = "VeryLazy",
 	opts = {
+		ring = {
+			storage = "shada",
+		},
 		system_clipboard = {
-			sync_with_ring = not vim.env.SSH_CONNECTION,
+			sync_with_ring = false,
 		},
 		highlight = { timer = 150 },
 	},
