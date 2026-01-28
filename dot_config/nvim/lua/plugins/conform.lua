@@ -20,7 +20,7 @@ return {
 			html = { "prettierd" },
 			css = { "prettierd" },
 			yaml = { "prettierd" },
-			vue = { "prettierd" },
+			vue = { "biome" },
 		},
 	},
 	keys = {
