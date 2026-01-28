@@ -93,6 +93,7 @@ return {
 			})
 
 			vim.lsp.config("vue_ls", {})
+
 			vim.lsp.config("lua_ls", {
 				settings = {
 					Lua = {
