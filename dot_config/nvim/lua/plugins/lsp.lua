@@ -37,24 +37,23 @@ return {
 	},
 	{
 		"mason-org/mason-lspconfig.nvim",
-		opts = {
-			ensure_installed = {
-				"html",
-				"lua_ls",
-				"vue_ls",
-				"vtsls",
-				"stylua",
-				"biome",
-				"prettierd",
-				"jsonls",
-			},
-		},
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
 			"neovim/nvim-lspconfig",
 		},
-		config = function(_, opts)
-			require("mason-lspconfig").setup(opts)
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"html",
+					"lua_ls",
+					"vue_ls",
+					"vtsls",
+					"stylua",
+					"biome",
+					"prettierd",
+					"jsonls",
+				},
+			})
 
 			local vue_language_server_path = vim.fn.expand("$MASON/packages")
 				.. "/vue-language-server"
