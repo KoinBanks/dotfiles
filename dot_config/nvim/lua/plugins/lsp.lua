@@ -102,6 +102,7 @@ return {
 			})
 		end,
 	},
+
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",
