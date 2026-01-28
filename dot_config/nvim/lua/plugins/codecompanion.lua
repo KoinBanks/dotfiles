@@ -24,10 +24,24 @@ return {
 			":CodeCompanionActions<CR>",
 			mode = { "n" },
 			silent = true,
-			desc = "Code Companion Chat",
+			desc = "Code Companion Actions",
 		},
 	},
 	opts = {
+		rules = {
+			default = {
+				description = "Default rules",
+				files = {
+					"CODECOMPANION.md",
+				},
+			},
+			opts = {
+				chat = {
+					autoload = "default",
+					enabled = true,
+				},
+			},
+		},
 		interactions = {
 			chat = {
 				adapter = "copilot",
