@@ -50,7 +50,6 @@ return {
 					"vtsls",
 					"stylua",
 					"biome",
-					"prettierd",
 					"jsonls",
 				},
 			})
