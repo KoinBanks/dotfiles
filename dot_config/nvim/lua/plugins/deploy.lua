@@ -22,6 +22,10 @@ return {
 			timeout = 10,
 			hosts = {
 				{
+					address = "ims@46.224.9.12",
+					label = "Hetzner Weather Studio DEV",
+				},
+				{
 					address = "10.111.8.26",
 					label = "Bosna 1025 DEV",
 				},
