@@ -24,6 +24,14 @@ return {
 				{
 					address = "ims@46.224.9.12",
 					label = "Hetzner Weather Studio DEV",
+					rewrite = function(context)
+						local changed_path = context.destination:gsub(
+							"/opt/ims/tomcat/webapps/ims",
+							"/home/ims/web-deploy"
+						)
+
+						context.destination = changed_path
+					end,
 				},
 				{
 					address = "10.111.8.26",
