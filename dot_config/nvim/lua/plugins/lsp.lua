@@ -47,6 +47,7 @@ return {
 					"html",
 					"lua_ls",
 					"vue_ls",
+					"fish_lsp",
 					"vtsls",
 					"stylua",
 					"biome",
