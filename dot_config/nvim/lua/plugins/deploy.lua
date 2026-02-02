@@ -74,6 +74,10 @@ return {
 					fs = "/home/patrik/develop/repos/mis/sw/ims/ims4/Jlib/src/main/resources",
 					remote = "/opt/ims/bin",
 				},
+				{
+					fs = "/home/patrik/.local/share/chezmoi/scripts",
+					remote = "/home/ims/scripts",
+				},
 			},
 		})
 	end,
