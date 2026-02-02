@@ -19,8 +19,7 @@ set -- "${ARGS[@]}"
 
 # Check for root privileges
 if [ "$EUID" -ne 0 ]; then
-    echo "Root privileges are required. Re-running with sudo..."
-    exec sudo "$0" "$@"
+    echo "Root privileges are required."
 fi
 
 # Ensure source exists
