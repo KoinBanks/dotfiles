@@ -71,7 +71,7 @@ return {
 					fs = "/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp",
 					remote = "/opt/ims/tomcat/webapps/ims",
 					rewrite = function(context)
-						local skip_extensions = { "md", "ts", "lock", "sh", "md", "java" }
+						local skip_extensions = { "ts", "lock", "sh", "md", "java" }
 
 						if vim.tbl_contains(skip_extensions, context.extension or "") then
 							return false
