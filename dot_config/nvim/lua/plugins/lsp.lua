@@ -45,7 +45,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"html",
-					"lua_ls",
+					"lua_ls@3.16.4",
 					"vue_ls",
 					"fish_lsp",
 					"vtsls",
