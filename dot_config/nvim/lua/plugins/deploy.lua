@@ -20,6 +20,7 @@ return {
 	config = function()
 		require("deploy").setup({
 			timeout = 10,
+			tool = "rsync",
 			hosts = {
 				{
 					address = "ims@46.224.9.12",
