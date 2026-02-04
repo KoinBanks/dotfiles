@@ -16,6 +16,12 @@ return {
 			desc = "Toggle deploy on save",
 			silent = true,
 		},
+		{
+			"<leader>dl",
+			":Deploy log<CR>",
+			desc = "Toggle deploy on save",
+			silent = true,
+		},
 	},
 	config = function()
 		require("deploy").setup({
