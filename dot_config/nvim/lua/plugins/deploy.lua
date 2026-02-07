@@ -22,6 +22,12 @@ return {
 			desc = "Toggle deploy on save",
 			silent = true,
 		},
+		{
+			"<leader>dp",
+			":Deploy package<CR>",
+			desc = "Deploy package",
+			silent = true,
+		},
 	},
 	config = function()
 		require("deploy").setup({
