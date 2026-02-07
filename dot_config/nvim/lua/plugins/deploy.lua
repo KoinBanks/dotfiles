@@ -27,6 +27,14 @@ return {
 		require("deploy").setup({
 			timeout = 10,
 			tool = "rsync",
+			packages = {
+				{
+					label = "GeoSuite",
+					files = {
+						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/js2/fragments/geosuite/**",
+					},
+				},
+			},
 			hosts = {
 				{
 					address = "ims@46.224.9.12",
