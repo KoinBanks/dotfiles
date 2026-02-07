@@ -37,7 +37,13 @@ return {
 				{
 					label = "GeoSuite",
 					files = {
-						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/js2/fragments/geosuite/**",
+						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/js2/fragments/geosuite/**.*",
+					},
+				},
+				{
+					label = "GeoSuite Build",
+					files = {
+						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/build2/dist/**.*",
 					},
 				},
 			},
