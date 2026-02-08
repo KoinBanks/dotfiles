@@ -19,7 +19,6 @@ return {
 				"lua",
 				"luadoc",
 				"json",
-				"jsonc",
 				"tsx",
 				"css",
 				"scss",
