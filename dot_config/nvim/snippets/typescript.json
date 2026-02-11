@@ -1,12 +1,9 @@
 {
-
-	"Anonymous function": {
-		"prefix": ["afn"],
-		"body": [
-			"(${1}) => ${2}"
-		],
-		"description": "An anonymous function."
-	},
+  "Anonymous function": {
+    "prefix": ["afn"],
+    "body": ["(${1}) => ${2}"],
+    "description": "An anonymous function."
+  },
 
   "Inline JSDoc comment": {
     "prefix": ["ijsdoc"],
