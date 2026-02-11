@@ -13,14 +13,14 @@ return {
 			desc = "Code Companion inline edit",
 		},
 		{
-			"<leader>ac",
-			":CodeCompanionChat<CR>",
+			"<leader>aa",
+			":CodeCompanionChat Toggle<CR>",
 			mode = { "n" },
 			silent = true,
 			desc = "Code Companion Chat",
 		},
 		{
-			"<leader>aa",
+			"<leader>ac",
 			":CodeCompanionActions<CR>",
 			mode = { "n" },
 			silent = true,
