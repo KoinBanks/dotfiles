@@ -53,21 +53,25 @@ vim.api.nvim_create_user_command("SwitchIMSFileType", function()
 			print("Unknown IMS type")
 			return
 		end
-		local next_index = index % 3 + 1
-		local next_type = types[next_index]
-		local new_path =
-			string.gsub(file_dir, "/" .. ims_type .. "/", "/" .. next_type .. "/")
-		local exts = ext_map[next_type]
-		for _, ext in ipairs(exts) do
-			local target_file = new_path
-				.. "/"
-				.. string.gsub(file_name, "%." .. file_ext .. "$", ext)
-			if vim.fn.filereadable(target_file) == 1 then
-				vim.cmd("edit " .. target_file)
-				return
+
+		-- Attempt to cycle through all other types until a file is found
+		for i = 1, #types - 1 do
+			local next_index = (index + i - 1) % #types + 1
+			local next_type = types[next_index]
+			local new_path =
+				string.gsub(file_dir, "/" .. ims_type .. "/", "/" .. next_type .. "/")
+			local exts = ext_map[next_type]
+			for _, ext in ipairs(exts) do
+				local target_file = new_path
+					.. "/"
+					.. string.gsub(file_name, "%." .. file_ext .. "$", ext)
+				if vim.fn.filereadable(target_file) == 1 then
+					vim.cmd("edit " .. target_file)
+					return
+				end
 			end
 		end
-		print("No matching file found for " .. next_type)
+		print("No matching related files found")
 	else
 		print("File not supported")
 	end
