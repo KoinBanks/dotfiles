@@ -131,3 +131,15 @@ vim.api.nvim_create_user_command("FindIMSPath", function()
 		end,
 	})
 end, {})
+
+vim.api.nvim_create_user_command("NukePackages", function()
+	local lazy_dir = vim.fn.stdpath("data") .. "/lazy"
+
+	if vim.fn.isdirectory(lazy_dir) == 1 then
+		vim.fn.delete(lazy_dir, "rf")
+		print("Deleted lazy directory: " .. lazy_dir)
+		vim.cmd("quitall!")
+	else
+		print("Lazy directory does not exist: " .. lazy_dir)
+	end
+end, {})
