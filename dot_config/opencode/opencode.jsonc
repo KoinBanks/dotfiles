@@ -1,9 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "gruvbox",
-  "server": {
-    "port": 8000,
-  },
   "mcp": {
     "tavily": {
       "type": "remote",
