@@ -16,6 +16,7 @@ return {
 			javascript = { "biome" },
 			typescript = { "biome" },
 			json = { "prettierd" },
+			jsonc = { "prettierd" },
 			markdown = { "prettierd" },
 			html = { "prettierd" },
 			css = { "prettierd" },
