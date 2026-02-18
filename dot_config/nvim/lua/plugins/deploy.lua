@@ -36,13 +36,13 @@ return {
 			packages = {
 				{
 					label = "GeoSuite",
-					files = {
+					globs = {
 						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/js2/fragments/geosuite/**.*",
 					},
 				},
 				{
 					label = "GeoSuite Build",
-					files = {
+					globs = {
 						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/build2/dist/**.*",
 					},
 				},
