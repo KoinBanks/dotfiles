@@ -6,7 +6,9 @@ return {
 	},
 	config = function()
 		---@type opencode.Opts
-		vim.g.opencode_opts = {}
+		vim.g.opencode_opts = {
+			port = 8000,
+		}
 
 		vim.keymap.set({ "n", "x" }, "<C-a>", function()
 			require("opencode").ask("@this: ", { submit = true })
