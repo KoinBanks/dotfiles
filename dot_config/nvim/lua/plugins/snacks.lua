@@ -6,8 +6,22 @@ return {
 	opts = {
 		bigfile = { enabled = true },
 		explorer = { enabled = true },
-		input = { enabled = true },
-		picker = { enabled = true },
+		input = {},
+		picker = { -- Enhances `select()`
+			actions = {
+				opencode_send = function(...)
+					return require("opencode").snacks_picker_send(...)
+				end,
+			},
+			win = {
+				input = {
+					keys = {
+						["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+					},
+				},
+			},
+		},
+		terminal = {},
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = not vim.g.neovide },

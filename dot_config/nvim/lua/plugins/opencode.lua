@@ -6,13 +6,8 @@ return {
 	},
 	config = function()
 		---@type opencode.Opts
-		vim.g.opencode_opts = {
-			-- Your configuration, if any; goto definition on the type or field for details
-		}
+		vim.g.opencode_opts = {}
 
-		vim.o.autoread = true -- Required for `opts.events.reload`
-
-		-- Recommended/example keymaps
 		vim.keymap.set({ "n", "x" }, "<C-a>", function()
 			require("opencode").ask("@this: ", { submit = true })
 		end, { desc = "Ask opencode…" })

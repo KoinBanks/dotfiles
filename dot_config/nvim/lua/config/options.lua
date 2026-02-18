@@ -16,6 +16,7 @@ end
 
 -------------------------------From lazyvim ------------------------------------
 
+vim.o.autoread = true -- Required for `opts.events.reload` by opencode
 opt.autowrite = true -- Enable auto write
 -- only set clipboard if not in ssh, to make sure the OSC 52
 -- integration works automatically.
