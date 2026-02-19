@@ -8,7 +8,7 @@ return {
 	},
 	keys = {
 		{
-			"<leader>ae",
+			"<C-a>",
 			":CodeCompanion ",
 			mode = { "v" },
 			desc = "Code Companion inline edit",
