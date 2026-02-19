@@ -37,7 +37,7 @@ return {
 				default = {
 					description = "Default rules",
 					files = {
-						"CODECOMPANION.md",
+						"AGENTS.md",
 					},
 				},
 				opts = {
