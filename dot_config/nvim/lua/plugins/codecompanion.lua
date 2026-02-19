@@ -54,6 +54,12 @@ return {
 				inline = {
 					adapter = { name = "copilot", model = "gemini-3-flash-preview" },
 				},
+				background = {
+					adapter = {
+						name = "copilot",
+						model = "gpt-4.1",
+					},
+				},
 			},
 			adapters = {
 				http = {
