@@ -30,6 +30,9 @@ return {
 	},
 	config = function()
 		require("codecompanion").setup({
+			opts = {
+				log_level = "DEBUG",
+			},
 			rules = {
 				default = {
 					description = "Default rules",
@@ -92,9 +95,6 @@ return {
 						)
 					end,
 				},
-			},
-			opts = {
-				log_level = "DEBUG",
 			},
 		})
 	end,
