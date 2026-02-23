@@ -65,6 +65,10 @@ return {
 					label = "Bosna 1025 DEV",
 				},
 				{
+					address = "172.18.2.24",
+					label = "SHMU DEV",
+				},
+				{
 					address = "172.18.1.235",
 					label = "Bosna 1025 PROD",
 				},
