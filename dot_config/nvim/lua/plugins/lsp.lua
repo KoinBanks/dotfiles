@@ -31,6 +31,7 @@ return {
 				"yaml",
 				"toml",
 				"regex",
+				"editorconfig",
 			})
 		end,
 	},
