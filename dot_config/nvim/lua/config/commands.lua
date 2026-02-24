@@ -147,3 +147,21 @@ vim.api.nvim_create_user_command("NukePackages", function()
 		print("Lazy directory does not exist: " .. lazy_dir)
 	end
 end, {})
+
+vim.api.nvim_create_user_command("OpenBranchTask", function()
+	local git_branch_name =
+		vim.fn.systemlist("git rev-parse --abbrev-ref HEAD")[1]
+
+	-- match 5-digit number
+	local its_task = string.match(git_branch_name, "(%d%d%d%d%d)")
+
+	if its_task then
+		local url = "https://its.microstep-mis.com/issues/" .. its_task
+
+		print("Opening task URL: " .. url)
+
+		vim.system({ "wslview", url }, { text = true }, function() end)
+	else
+		print("No 5-digit task number found in branch name: " .. git_branch_name)
+	end
+end, {})
