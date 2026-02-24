@@ -34,3 +34,10 @@ vim.keymap.set(
 	":FindIMSPath<CR>",
 	{ silent = true, desc = "Find IMS path" }
 )
+
+vim.keymap.set(
+	"n",
+	"<leader>oi",
+	":OpenBranchTask<CR>",
+	{ silent = true, desc = "Open branch task in browser" }
+)
