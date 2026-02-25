@@ -9,37 +9,5 @@
     "prefix": ["ijsdoc"],
     "body": ["/** @${1:type} {${2}} */"],
     "description": "An inline JSDoc comment."
-  },
-
-  "Get variables from space": {
-    "prefix": ["getvariables"],
-    "description": "RPC to get variables from spaceview",
-    "body": [
-      "const [variablesErr, variables = []] = await rpcTry('com.microstepmis.envidb.util.DBDataRPC.getVariablesCfgFromSpace')"
-    ]
-  },
-
-  "Get stations from space": {
-    "prefix": ["getstations"],
-    "description": "RPC to get stations from spaceview",
-    "body": [
-      "const [stationsErr, stations = []] = await rpcTry('com.microstepmis.envidb.util.DBDataRPC.getStationsCfgFromSpace')"
-    ]
-  },
-
-  "Get stations from space by property value": {
-    "prefix": ["getstationsbyproperty"],
-    "description": "RPC to get stations from spaceview by property value",
-    "body": [
-      "const [stationsErr, stations = []] = await rpcTry(",
-      "  'com.microstepmis.envidb.util.DBDataRPC.getStationsCfgFromSpaceByPropertyValue',",
-      "  {",
-      "    args: [",
-      "      X2O.createInstance('String', '${1:PropertyName}'),",
-      "      X2O.createInstance('String', '${2:PropertyValue}'),",
-      "    ],",
-      "  }",
-      ")"
-    ]
   }
 }
