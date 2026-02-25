@@ -11,7 +11,7 @@
     "description": "An inline JSDoc comment."
   },
 
-  "@type": {
+  "JSDoc @type": {
     "prefix": ["@type"],
     "body": ["/** @type {${1}} */"],
     "description": "An inline JSDoc type."
