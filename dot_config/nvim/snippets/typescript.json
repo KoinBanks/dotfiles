@@ -9,5 +9,11 @@
     "prefix": ["ijsdoc"],
     "body": ["/** @${1:type} {${2}} */"],
     "description": "An inline JSDoc comment."
+  },
+
+  "@type": {
+    "prefix": ["@type"],
+    "body": ["/** @type {${1}} */"],
+    "description": "An inline JSDoc type."
   }
 }
