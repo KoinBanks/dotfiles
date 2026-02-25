@@ -104,6 +104,10 @@ return {
 					rewrite = function(context)
 						local skip_extensions = { "ts", "lock", "sh", "md", "java" }
 
+						if context.source:find("/node_modules/") then
+							return false
+						end
+
 						if vim.tbl_contains(skip_extensions, context.extension or "") then
 							return false
 						end
