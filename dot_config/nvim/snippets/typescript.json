@@ -15,5 +15,18 @@
     "prefix": ["@type"],
     "body": ["/** @type {${1}} */"],
     "description": "An inline JSDoc type."
+  },
+
+  "JSDoc @fun": {
+    "prefix": ["@fun"],
+    "body": [
+      "/**",
+      " * ${1:Description of the function.}",
+      " *",
+      " * @param {${2:type}} ${3:name} - ${4:Description of the parameter.}",
+      " * @returns {${5:type}} - ${6:Description of the return value.}",
+      " */"
+    ],
+    "description": "Creates JSDoc for a function including parameters and return type."
   }
 }
