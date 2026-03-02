@@ -1,5 +1,3 @@
 function writehours
-	cd ~/develop/repos/writehours
-	bun run index.ts $argv
-	cd $prev_dir
+	bun run ~/develop/repos/writehours/index.ts $argv
 end
