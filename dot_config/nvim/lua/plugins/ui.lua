@@ -135,7 +135,7 @@ return {
 			options = { theme = "gruvbox", icons_enabled = true },
 			sections = {
 				lualine_c = {
-					"filename",
+					{ "filename", path = 4 },
 					{ "navic", color_correction = "dynamic" },
 				},
 				lualine_z = {
