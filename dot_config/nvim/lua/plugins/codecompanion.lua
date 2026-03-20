@@ -49,15 +49,15 @@ return {
 			},
 			interactions = {
 				chat = {
-					adapter = { name = "copilot", model = "gemini-3-flash-preview" },
+					adapter = { name = "copilot", model = "gpt-5.4" },
 				},
 				inline = {
-					adapter = { name = "copilot", model = "gemini-3-flash-preview" },
+					adapter = { name = "copilot", model = "gpt-5.4-mini" },
 				},
 				background = {
 					adapter = {
 						name = "copilot",
-						model = "gpt-4.1",
+						model = "gpt-5.4-mini",
 					},
 				},
 			},
