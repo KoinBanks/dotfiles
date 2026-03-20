@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 -- local mux = wezterm.mux
 
-config.default_domain = "WSL:WLinux"
+config.default_domain = "WSL:Pengwin"
 
 config.font_size = 12
 config.font = wezterm.font_with_fallback({
