@@ -1,5 +1,6 @@
 return {
 	"harrisoncramer/gitlab.nvim",
+	enabled = false,
 	lazy = true,
 	dependencies = {
 		"MunifTanjim/nui.nvim",
