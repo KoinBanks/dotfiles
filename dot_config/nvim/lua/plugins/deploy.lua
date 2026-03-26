@@ -43,8 +43,37 @@ return {
 				{
 					label = "GeoSuite Build",
 					globs = {
-						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/build2/dist/**.*",
+						"/home/patrik/develop/repos/geosuite/dist/geosuite/**.*",
 					},
+				},
+			},
+			mappings = {
+				{
+					fs = "/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp",
+					remote = "/opt/ims/tomcat/webapps/ims",
+					rewrite = function(context)
+						local skip_extensions = { "ts", "lock", "sh", "md", "java" }
+
+						if context.source:find("/node_modules/") then
+							return false
+						end
+
+						if vim.tbl_contains(skip_extensions, context.extension or "") then
+							return false
+						end
+					end,
+				},
+				{
+					fs = "/home/patrik/develop/repos/mis/sw/ims/ims4/Jlib/src/main/resources",
+					remote = "/opt/ims/bin",
+				},
+				{
+					fs = "/home/patrik/.local/share/chezmoi/scripts",
+					remote = "/home/ims/scripts",
+				},
+				{
+					fs = "/home/patrik/develop/repos/geosuite/dist/geosuite",
+					remote = "/home/ims/tomcat/webapps/ims/build2/geosuite",
 				},
 			},
 			hosts = {
@@ -95,31 +124,6 @@ return {
 				{
 					address = "139.129.22.177:9090",
 					label = "china prod",
-				},
-			},
-			mappings = {
-				{
-					fs = "/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp",
-					remote = "/opt/ims/tomcat/webapps/ims",
-					rewrite = function(context)
-						local skip_extensions = { "ts", "lock", "sh", "md", "java" }
-
-						if context.source:find("/node_modules/") then
-							return false
-						end
-
-						if vim.tbl_contains(skip_extensions, context.extension or "") then
-							return false
-						end
-					end,
-				},
-				{
-					fs = "/home/patrik/develop/repos/mis/sw/ims/ims4/Jlib/src/main/resources",
-					remote = "/opt/ims/bin",
-				},
-				{
-					fs = "/home/patrik/.local/share/chezmoi/scripts",
-					remote = "/home/ims/scripts",
 				},
 			},
 		})
