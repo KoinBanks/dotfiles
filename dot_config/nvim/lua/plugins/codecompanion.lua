@@ -63,6 +63,13 @@ return {
 			},
 			adapters = {
 				http = {
+					copilot = function()
+						return require("codecompanion.adapters").extend("copilot", {
+							schema = {
+								top_p = { enabled = false },
+							},
+						})
+					end,
 					openrouter = function()
 						return require("codecompanion.adapters").extend(
 							"openai_compatible",
