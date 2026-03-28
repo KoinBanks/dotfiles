@@ -49,10 +49,10 @@ return {
 			},
 			interactions = {
 				chat = {
-					adapter = { name = "copilot_acp", model = "gpt-5.4" },
+					adapter = { name = "copilot_fix", model = "gpt-5.4" },
 				},
 				inline = {
-					adapter = { name = "copilot_acp", model = "gpt-5.4-mini" },
+					adapter = { name = "copilot_fix", model = "gpt-5.4-mini" },
 				},
 				background = {
 					adapter = {
@@ -63,6 +63,17 @@ return {
 			},
 			adapters = {
 				http = {
+					copilot_fix = function()
+						return require("codecompanion.adapters").extend("copilot", {
+							schema = {
+								top_p = {
+									enabled = function()
+										return false
+									end,
+								},
+							},
+						})
+					end,
 					openrouter = function()
 						return require("codecompanion.adapters").extend(
 							"openai_compatible",
