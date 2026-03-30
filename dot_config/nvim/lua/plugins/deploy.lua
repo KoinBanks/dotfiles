@@ -71,10 +71,6 @@ return {
 					fs = "/home/patrik/.local/share/chezmoi/scripts",
 					remote = "/home/ims/scripts",
 				},
-				{
-					fs = "/home/patrik/develop/repos/geosuite/dist/geosuite",
-					remote = "/home/ims/tomcat/webapps/ims/build2/geosuite",
-				},
 			},
 			hosts = {
 				{
