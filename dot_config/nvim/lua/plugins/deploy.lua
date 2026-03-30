@@ -43,7 +43,7 @@ return {
 				{
 					label = "GeoSuite Build",
 					globs = {
-						"/home/patrik/develop/repos/geosuite/dist/geosuite/**.*",
+						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/build2/dist/geosuite/**.*",
 					},
 				},
 			},
