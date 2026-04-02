@@ -58,6 +58,10 @@ return {
 							return false
 						end
 
+						if context.source:find("/build2/") then
+							return false
+						end
+
 						if vim.tbl_contains(skip_extensions, context.extension or "") then
 							return false
 						end
