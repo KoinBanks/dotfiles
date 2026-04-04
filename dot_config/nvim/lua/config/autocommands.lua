@@ -92,7 +92,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
 		msg = "[CodeCompanion] " .. request.match:gsub("CodeCompanion", "")
 
 		vim.notify(msg, vim.log.levels.INFO, {
-			timeout = 1000,
+			timeout = 1500,
 			keep = function()
 				return not vim
 					.iter({
