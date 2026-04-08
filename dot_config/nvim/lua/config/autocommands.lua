@@ -92,23 +92,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
 		msg = "[CodeCompanion] " .. request.match:gsub("CodeCompanion", "")
 
 		Snacks.notifier.notify(msg, vim.log.levels.INFO, {
-			timeout = 1500,
-			keep = function()
-				return not vim
-					.iter({
-						"Finished",
-						"Opened",
-						"Hidden",
-						"Closed",
-						"Cleared",
-						"Created",
-						"ContextChanged",
-						"ChatDone",
-					})
-					:fold(false, function(acc, cond)
-						return acc or vim.endswith(request.match, cond)
-					end)
-			end,
+			timeout = 3000,
 			id = "code_companion_status",
 			title = "Code Companion Status",
 			opts = function(notif)
