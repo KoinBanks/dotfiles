@@ -72,39 +72,3 @@ vim.api.nvim_create_autocmd("FileType", {
 		end)
 	end,
 })
-
-local spinner =
-	{ "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-
-local cc_group =
-	vim.api.nvim_create_augroup("CodeCompanionFidgetHooks", { clear = true })
-
-vim.api.nvim_create_autocmd({ "User" }, {
-	pattern = "CodeCompanion*",
-	group = cc_group,
-	callback = function(request)
-		if request.match == "CodeCompanionChatSubmitted" then
-			return
-		end
-
-		local msg
-
-		msg = "[CodeCompanion] " .. request.match:gsub("CodeCompanion", "")
-
-		Snacks.notifier.notify(msg, vim.log.levels.INFO, {
-			timeout = 3000,
-			id = "code_companion_status",
-			title = "Code Companion Status",
-			opts = function(notif)
-				notif.icon = ""
-				if vim.endswith(request.match, "Started") then
-					---@diagnostic disable-next-line: undefined-field
-					notif.icon =
-						spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-				elseif vim.endswith(request.match, "Finished") then
-					notif.icon = " "
-				end
-			end,
-		})
-	end,
-})

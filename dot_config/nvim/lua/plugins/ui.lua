@@ -132,6 +132,21 @@ return {
 		dependencies = {
 			"echasnovski/mini.icons",
 		},
+		init = function()
+			local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
+
+			vim.api.nvim_create_autocmd({ "User" }, {
+				pattern = "CodeCompanionRequest*",
+				group = group,
+				callback = function(request)
+					if request.match == "CodeCompanionRequestStarted" then
+						vim.g.code_companion_processing = true
+					elseif request.match == "CodeCompanionRequestFinished" then
+						vim.g.code_companion_processing = false
+					end
+				end,
+			})
+		end,
 		opts = {
 			options = { theme = "gruvbox", icons_enabled = true },
 			sections = {
@@ -148,6 +163,9 @@ return {
 									and vim.g.DEPLOY_LAST_HOST.address
 								or "OFF"
 							)
+					end,
+					function()
+						return vim.g.code_companion_processing and " " or ""
 					end,
 				},
 			},
