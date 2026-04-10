@@ -165,7 +165,7 @@ return {
 							)
 					end,
 					function()
-						return vim.g.code_companion_processing and " " or ""
+						return vim.g.code_companion_processing and "󰊠 " or ""
 					end,
 				},
 			},
