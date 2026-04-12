@@ -37,7 +37,9 @@ return {
 				default = {
 					description = "Default rules",
 					files = {
+						"~/.agents/skills/caveman/SKILL.md",
 						"AGENTS.md",
+						"PERSONAL.md",
 					},
 				},
 				opts = {
