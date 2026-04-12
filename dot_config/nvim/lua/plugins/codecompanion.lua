@@ -50,6 +50,9 @@ return {
 			interactions = {
 				chat = {
 					adapter = { name = "copilot_fix", model = "gpt-5.4" },
+					opts = {
+						completion_provider = "blink",
+					},
 				},
 				inline = {
 					adapter = { name = "copilot_fix", model = "gpt-5.4-mini" },
