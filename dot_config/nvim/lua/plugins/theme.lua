@@ -1,9 +1,9 @@
-local theme = "gruvbox"
+local theme = "ember"
 
 return {
 	{
 		"ellisonleao/gruvbox.nvim",
-		enabled = theme == "gruvbox",
+		cond = theme == "gruvbox",
 		branch = "main",
 		version = false,
 		priority = 1000,
@@ -43,7 +43,7 @@ return {
 	},
 	{
 		"ember-theme/nvim",
-		enabled = theme == "ember",
+		cond = theme == "ember",
 		name = "ember",
 		priority = 1000,
 		config = function()
