@@ -1,6 +1,7 @@
 return {
-	-- "iFarmGolems/deploy.nvim",
+	"KoinBanks/deploy.nvim",
 	dir = "~/develop/repos/deploy.nvim",
+	dev = true,
 	dependencies = { "nvim-lua/plenary.nvim", "nvim-neotest/nvim-nio" },
 	event = "VeryLazy",
 	keys = {
