@@ -36,6 +36,11 @@ require("lazy").setup({
 	install = { colorscheme = { "gruvbox" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
+	dev = {
+		path = "~/develop/repos",
+		patterns = { "KoinBanks", "iFarmGolems" }, -- For example {"folke"}
+		fallback = true, -- Fallback to git when local plugin doesn't exist
+	},
 })
 
 require("config.commands")
