@@ -5,13 +5,20 @@
 	autocrlf = input
 	filemode = false
 	compression = 9
+	pager = delta
 [protocol]
 	version = 2
 [merge]
 	ff = no
+	conflictStyle = zdiff3
 [fetch]
 	prune = true
 [pull]
   rebase = true
 [blame]
-  ignoreRevsFile = .git-blame-ignore-revs
+	ignoreRevsFile = .git-blame-ignore-revs
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
