@@ -1,4 +1,4 @@
-local theme = "ember"
+local theme = "gruvbox"
 
 return {
 	{
