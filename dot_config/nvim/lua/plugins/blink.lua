@@ -5,7 +5,20 @@ return {
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
-		keymap = { preset = "enter", ["<C-y>"] = { "select_and_accept" } },
+		keymap = {
+			preset = "none",
+			["<C-space>"] = {
+				"show",
+				"show_documentation",
+				"hide_documentation",
+			},
+			["<C-e>"] = { "hide", "fallback" },
+			["<C-a>"] = { "select_and_accept", "fallback" },
+			["<C-j>"] = { "select_next", "fallback" },
+			["<C-k>"] = { "select_prev", "fallback" },
+			["<C-u>"] = { "scroll_documentation_up", "fallback" },
+			["<C-d>"] = { "scroll_documentation_down", "fallback" },
+		},
 		appearance = {
 			nerd_font_variant = "mono",
 		},
