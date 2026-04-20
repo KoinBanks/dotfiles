@@ -16,6 +16,9 @@ return {
 			documentation = { auto_show = true, auto_show_delay_ms = 200 },
 			ghost_text = { enabled = false },
 			accept = { auto_brackets = { enabled = false } },
+			list = {
+				selection = { preselect = true },
+			},
 			menu = {
 				direction_priority = { "n", "s" },
 				draw = {
