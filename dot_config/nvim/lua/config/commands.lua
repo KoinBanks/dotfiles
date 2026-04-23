@@ -78,8 +78,7 @@ vim.api.nvim_create_user_command("SwitchIMSFileType", function()
 end, {})
 
 vim.api.nvim_create_user_command("CreateIMSPage", function()
-	local dir =
-		vim.fn.input("Enter page directory (slash creates sub directory):")
+	local dir = vim.fn.input("Enter page directory (ex: customer/greece_1025):")
 
 	if dir == "" then
 		print("No directory provided. Aborting.")
