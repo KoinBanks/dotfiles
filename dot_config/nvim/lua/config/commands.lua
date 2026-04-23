@@ -80,7 +80,7 @@ end, {})
 vim.api.nvim_create_user_command("CreateIMSPage", function()
 	local dir = vim.fn.input(
 		"Enter page directory (ex: customer/greece_1025):",
-		"customer/change_me"
+		"customer/"
 	)
 
 	if dir == "" then
