@@ -61,7 +61,7 @@ return {
 			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 			per_filetype = {
 				javascript = { "lsp", "path", "snippets" },
-				codecompanion = { "codecompanion" },
+				codecompanion = { "codecompanion", "path" },
 				["grug-far"] = {},
 			},
 			providers = {
