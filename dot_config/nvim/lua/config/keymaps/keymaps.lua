@@ -7,6 +7,9 @@ vim.keymap.set(
 
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Exit insert mode" })
 
+-- Paste without overwriting the default register
+vim.keymap.set("v", "p", '"_dP')
+
 vim.keymap.set(
 	{ "i", "n" },
 	",,",
