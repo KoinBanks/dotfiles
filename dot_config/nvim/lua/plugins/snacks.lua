@@ -457,14 +457,6 @@ return {
 			end,
 			desc = "LSP Configurations",
 		},
-		-- Other
-		{
-			"<leader>z",
-			function()
-				Snacks.zen()
-			end,
-			desc = "Toggle Zen Mode",
-		},
 		{
 			"<leader>.",
 			function()
