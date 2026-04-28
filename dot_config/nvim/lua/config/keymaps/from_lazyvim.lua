@@ -250,5 +250,4 @@ map("n", "gK", function() return vim.lsp.buf.signature_help() end, { desc = "Sig
 map("i", "<c-k>", function() return vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 map({ "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens" })
-map("n", "<leader>cC", vim.lsp.codelens.refresh, { desc = "Refresh & Display Codelens" })
 map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
