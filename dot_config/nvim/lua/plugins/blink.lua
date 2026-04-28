@@ -32,6 +32,7 @@ return {
 			},
 			["<C-e>"] = { "hide", "fallback" },
 			["<C-a>"] = { "select_and_accept", "fallback" },
+			["<CR>"] = { "select_and_accept", "fallback" },
 			["<C-j>"] = { "select_next", "fallback" },
 			["<C-k>"] = { "select_prev", "fallback" },
 			["<C-u>"] = { "scroll_documentation_up", "fallback" },
