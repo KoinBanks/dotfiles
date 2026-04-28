@@ -208,6 +208,7 @@ local diagnostic_goto = function(next, severity)
 		})
 	end
 end
+
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
 map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
@@ -228,16 +229,6 @@ Snacks.toggle.indent():map("<leader>ug")
 Snacks.toggle.scroll():map("<leader>uS")
 Snacks.toggle.inlay_hints():map("<leader>uh")
 Snacks.toggle.zen():map("<leader>uz")
-
--- lazygit
-if vim.fn.executable("lazygit") == 1 then
-  map("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
-end
-
-map("n", "<leader>gl", function() Snacks.picker.git_log() end, { desc = "Git Log (cwd)" })
-map("n", "<leader>gb", function() Snacks.picker.git_log_line() end, { desc = "Git Blame Line" })
-map("n", "<leader>gh", function() Snacks.picker.git_log_file() end, { desc = "Git Current File History" })
-map({ "n", "x" }, "<leader>go", function() Snacks.gitbrowse() end, { desc = "Git open in origin" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
