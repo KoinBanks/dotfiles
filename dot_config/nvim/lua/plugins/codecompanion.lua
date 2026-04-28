@@ -68,6 +68,7 @@ return {
 			},
 			adapters = {
 				http = {
+					opts = { show_presets = false },
 					copilot_fix = function()
 						return require("codecompanion.adapters").extend("copilot", {
 							schema = {
