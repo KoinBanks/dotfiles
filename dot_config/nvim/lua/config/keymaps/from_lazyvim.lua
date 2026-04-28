@@ -78,9 +78,6 @@ map(
 
 -- buffers
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>bd", function()
-	Snacks.bufdelete()
-end, { desc = "Delete Buffer" })
 map("n", "<leader>bo", function()
 	Snacks.bufdelete.other()
 end, { desc = "Delete Other Buffers" })
