@@ -7,6 +7,7 @@ return {
 		bigfile = { enabled = true },
 		explorer = { enabled = true },
 		input = {},
+		zen = { show = { statusline = true, tabline = true } },
 		picker = { -- Enhances `select()`
 			actions = {
 				opencode_send = function(...)
