@@ -5,6 +5,12 @@
     "description": "An anonymous function."
   },
 
+	"Console log": {
+		"prefix": ["clog"],
+		"body": ["console.log(${1});"],
+		"description": "A console log statement."
+	},
+
   "Inline JSDoc comment": {
     "prefix": ["ijsdoc"],
     "body": ["/** @${1:type} {${2}} */"],
