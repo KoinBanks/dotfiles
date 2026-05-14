@@ -34,6 +34,8 @@ return {
 				end,
 				diagnostics = "nvim_lsp",
 				always_show_bufferline = false,
+				persist_buffer_sort = false,
+				sort_by = "insert_at_end",
 				separator_style = "slope",
 				offsets = {
 					{
