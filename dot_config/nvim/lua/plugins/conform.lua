@@ -6,6 +6,9 @@ return {
 			biome = {
 				require_cwd = true,
 			},
+			oxfmt = {
+				require_cwd = true,
+			},
 			injected = { options = { ignore_errors = true } },
 		},
 		format_on_save = {
@@ -13,8 +16,8 @@ return {
 		},
 		formatters_by_ft = {
 			lua = { "stylua" },
-			javascript = { "biome" },
-			typescript = { "biome" },
+			javascript = { "oxfmt", "biome" },
+			typescript = { "oxfmt", "biome" },
 			json = { "prettierd" },
 			jsonc = { "prettierd" },
 			markdown = { "prettierd" },

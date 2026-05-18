@@ -44,6 +44,8 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					"oxlint",
+					"oxfmt",
 					"html",
 					"lua_ls",
 					"vue_ls",
