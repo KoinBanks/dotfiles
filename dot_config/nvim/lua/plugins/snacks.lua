@@ -82,6 +82,7 @@ return {
 			function()
 				Snacks.explorer({
 					hidden = true,
+					ignored = true,
 				})
 			end,
 			desc = "File Explorer",
