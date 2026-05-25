@@ -43,6 +43,11 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
+				automatic_enable = {
+					exclude = {
+						"oxfmt",
+					},
+				},
 				ensure_installed = {
 					"oxlint",
 					"oxfmt",
