@@ -97,27 +97,6 @@ return {
 										default = "deepseek/deepseek-v4-flash",
 									},
 								},
-								-- handlers = {
-								-- 	response = {
-								-- 		---@param self CodeCompanion.HTTPAdapter
-								-- 		--- `data` is the output of the `parse_chat` handler
-								-- 		---@param data {status: string, output: {role: string?, content: string?}, extra: table}
-								-- 		---@return {status: string, output: {role: string?, content: string?, reasoning:{content: string?}?}}
-								-- 		parse_meta = function(self, data)
-								-- 			local extra = data.extra
-								-- 			if extra.reasoning_content then
-								-- 				-- codecompanion expect the reasoning tokens in this format
-								-- 				data.output.reasoning =
-								-- 					{ content = extra.reasoning_content }
-								-- 				-- so that codecompanion doesn't mistake this as a normal response with empty string as the content
-								-- 				if data.output.content == "" then
-								-- 					data.output.content = nil
-								-- 				end
-								-- 			end
-								-- 			return data
-								-- 		end,
-								-- 	},
-								-- },
 							}
 						)
 					end,
