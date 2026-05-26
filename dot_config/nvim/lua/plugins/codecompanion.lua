@@ -80,6 +80,9 @@ return {
 							},
 						})
 					end,
+					deepseek = function()
+						return require("codecompanion.adapters").extend("deepseek", {})
+					end,
 					openrouter = function()
 						return require("codecompanion.adapters").extend(
 							"openai_compatible",
