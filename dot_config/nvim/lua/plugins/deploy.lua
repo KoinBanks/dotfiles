@@ -20,7 +20,7 @@ return {
 		{
 			"<leader>dl",
 			":Deploy log<CR>",
-			desc = "Toggle deploy on save",
+			desc = "Show deploy log",
 			silent = true,
 		},
 		{
