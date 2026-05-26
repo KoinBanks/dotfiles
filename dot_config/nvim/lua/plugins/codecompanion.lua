@@ -81,7 +81,13 @@ return {
 						})
 					end,
 					deepseek = function()
-						return require("codecompanion.adapters").extend("deepseek", {})
+						return require("codecompanion.adapters").extend("deepseek", {
+							schema = {
+								model = {
+									default = "deepseek-v4-pro",
+								},
+							},
+						})
 					end,
 					openrouter = function()
 						return require("codecompanion.adapters").extend(
