@@ -1,5 +1,6 @@
 {
   "lastChangelogVersion": "0.75.5",
   "defaultProvider": "deepseek",
-  "defaultModel": "deepseek-v4-pro"
+  "defaultModel": "deepseek-v4-pro",
+	"editorPaddingX": 1
 }
