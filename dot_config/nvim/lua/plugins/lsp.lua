@@ -57,7 +57,6 @@ return {
 					"fish_lsp",
 					"vtsls",
 					"stylua",
-					"biome",
 					"jsonls",
 				},
 			})
