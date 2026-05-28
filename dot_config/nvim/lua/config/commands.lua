@@ -185,7 +185,7 @@ vim.api.nvim_create_user_command("PickChezmoi", function()
 			end
 
 			vim.schedule(function()
-				Snacks.picker.files({ items = items })
+				Snacks.picker.files({ title = "Configuration", items = items })
 			end)
 		else
 			print("Error listing chezmoi files: " .. res.stderr)
