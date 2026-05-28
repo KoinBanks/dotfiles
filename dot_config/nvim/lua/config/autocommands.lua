@@ -73,8 +73,8 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- Automatically apply chezmoi changes on save
 local chezmoi_pattern = os.getenv("HOME") .. "/.local/share/chezmoi/*"
-
 vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = chezmoi_pattern,
 	callback = function()
@@ -82,10 +82,27 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		local is_winhome = file:find("/winhome/")
 
 		if not is_winhome then
-			vim.cmd("silent !chezmoi apply --source-path " .. file)
-			vim.notify("Applied " .. file .. " with chezmoi", vim.log.levels.INFO, {
-				title = "Chezmoi",
-			})
+			vim.system({ "chezmoi", "apply", "--source-path", file }, {
+				cwd = os.getenv("HOME"),
+			}, function(result)
+				if result.code == 0 then
+					vim.schedule(function()
+						vim.notify("Successfully applied!", vim.log.levels.INFO, {
+							title = "Chezmoi",
+						})
+					end)
+				else
+					vim.schedule(function()
+						vim.notify(
+							"Failed to apply " .. file .. " with chezmoi: " .. result.stderr,
+							vim.log.levels.ERROR,
+							{
+								title = "Chezmoi",
+							}
+						)
+					end)
+				end
+			end)
 		end
 	end,
 })
