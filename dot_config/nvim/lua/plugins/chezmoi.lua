@@ -35,14 +35,6 @@ end
 
 return {
 	{
-		-- highlighting for chezmoi files template files
-		"alker0/chezmoi.vim",
-		init = function()
-			vim.g["chezmoi#use_tmp_buffer"] = 1
-			vim.g["chezmoi#source_dir_path"] = vim.env.HOME .. "/.local/share/chezmoi"
-		end,
-	},
-	{
 		"xvzc/chezmoi.nvim",
 		cmd = { "ChezmoiEdit" },
 		keys = {
@@ -61,9 +53,6 @@ return {
 				on_open = true,
 				on_apply = true,
 				on_watch = false,
-			},
-			telescope = {
-				select = { "<CR>" },
 			},
 		},
 		init = function()
