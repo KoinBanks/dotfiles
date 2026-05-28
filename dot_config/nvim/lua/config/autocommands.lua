@@ -72,3 +72,20 @@ vim.api.nvim_create_autocmd("FileType", {
 		end)
 	end,
 })
+
+local chezmoi_pattern = os.getenv("HOME") .. "/.local/share/chezmoi/*"
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = chezmoi_pattern,
+	callback = function()
+		local file = vim.fn.expand("%:p")
+		local is_winhome = file:find("/winhome/")
+
+		if not is_winhome then
+			vim.cmd("silent !chezmoi apply --source-path " .. file)
+			vim.notify("Applied " .. file .. " with chezmoi", vim.log.levels.INFO, {
+				title = "Chezmoi",
+			})
+		end
+	end,
+})
