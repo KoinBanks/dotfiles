@@ -167,3 +167,28 @@ vim.api.nvim_create_user_command("OpenBranchTask", function()
 		)
 	end
 end, {})
+
+vim.api.nvim_create_user_command("PickChezmoi", function()
+	vim.system({
+		"chezmoi",
+		"managed",
+		"--path-style",
+		"source-absolute",
+		"--include",
+		"files",
+	}, function(res)
+		if res.code == 0 then
+			local items = {}
+
+			for _, line in ipairs(vim.split(res.stdout, "\n", { trimempty = true })) do
+				table.insert(items, { text = line, file = line })
+			end
+
+			vim.schedule(function()
+				Snacks.picker.files({ items = items })
+			end)
+		else
+			print("Error listing chezmoi files: " .. res.stderr)
+		end
+	end)
+end, {})

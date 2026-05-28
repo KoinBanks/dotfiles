@@ -63,3 +63,10 @@ vim.keymap.set(
 	":OpenBranchTask<CR>",
 	{ silent = true, desc = "Open branch task in browser" }
 )
+
+vim.keymap.set(
+	"n",
+	"<leader>fc",
+	":PickChezmoi<CR>",
+	{ silent = true, desc = "Find chezmoi file" }
+)
