@@ -3,3 +3,11 @@ sourceDir = "/home/patrik/.local/share/chezmoi"
   autoPush = true
 [data]
   private_ = false
+[hooks.apply.post]
+  command = "sh"
+  after = ["apply"]
+  args = [
+    "-c",
+    "dst=$(wslupath -H) && src=\"{{ .chezmoi.sourceDir }}/winhome\" && mkdir -p \"$dst\" && cp -a \"$src\"/. \"$dst\"/"
+  ]
+
