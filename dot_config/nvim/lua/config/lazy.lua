@@ -45,3 +45,4 @@ require("lazy").setup({
 
 require("config.commands")
 require("config.keymaps")
+require("config.afterinit")
