@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		"lua",
 	},
 	callback = function()
-		vim.opt_local.colorcolumn = "81"
+		vim.opt_local.colorcolumn = "101"
 	end,
 })
 
