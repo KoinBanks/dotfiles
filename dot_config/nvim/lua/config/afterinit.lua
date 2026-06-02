@@ -13,3 +13,11 @@ vim.system({
 		print("Error getting chezmoi files: " .. res.stderr)
 	end
 end)
+
+vim.system({ "wslupath", "-H" }, function(res)
+	if res.code == 0 then
+		vim.g.__windows_home_dir = res.stdout:gsub("\n", "")
+	else
+		print("Error getting wslupath home: " .. res.stderr)
+	end
+end)
