@@ -75,6 +75,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Automatically apply chezmoi changes on save
 local chezmoi_pattern = os.getenv("HOME") .. "/.local/share/chezmoi/*"
+
 vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = chezmoi_pattern,
 	callback = function()
@@ -86,21 +87,46 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 				cwd = os.getenv("HOME"),
 			}, function(result)
 				if result.code == 0 then
-					vim.schedule(function()
-						vim.notify("Successfully applied!", vim.log.levels.INFO, {
-							title = "Chezmoi",
-						})
-					end)
+					vim.notify("Successfully applied!", vim.log.levels.INFO, {
+						title = "Chezmoi",
+					})
 				else
-					vim.schedule(function()
-						vim.notify(
-							"Failed to apply " .. file .. " with chezmoi: " .. result.stderr,
-							vim.log.levels.ERROR,
-							{
-								title = "Chezmoi",
-							}
-						)
-					end)
+					vim.notify(
+						"Failed to apply " .. file .. " with chezmoi: " .. result.stderr,
+						vim.log.levels.ERROR,
+						{
+							title = "Chezmoi",
+						}
+					)
+				end
+			end)
+		else
+			local destination = vim.g.__windows_home_dir
+				.. "/"
+				.. file:match("/winhome/(.*)$"):gsub("dot_", ".")
+
+			vim.system({ "cp", file, destination }, function(result)
+				if result.code == 0 then
+					vim.notify(
+						"Successfully copied to " .. destination,
+						vim.log.levels.INFO,
+						{
+							title = "Chezmoi",
+						}
+					)
+				else
+					vim.notify(
+						"Failed to copy "
+							.. file
+							.. " to "
+							.. destination
+							.. ": "
+							.. result.stderr,
+						vim.log.levels.ERROR,
+						{
+							title = "Chezmoi",
+						}
+					)
 				end
 			end)
 		end
