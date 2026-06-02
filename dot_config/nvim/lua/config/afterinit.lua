@@ -19,6 +19,7 @@ vim.system({
 	end
 end)
 
+-- cache the Windows home directory path in a global variable for use in other parts of the configuration
 vim.system({ "wslupath", "-H" }, function(res)
 	if res.code == 0 then
 		vim.g.__windows_home_dir = res.stdout:gsub("\n", "")
