@@ -1,3 +1,8 @@
+-- restore last session if no files were specified on the command line
+if vim.fn.argc() == 0 then
+	require("persistence").load({ last = true })
+end
+
 -- cache the list of files managed by chezmoi in a global variable
 vim.system({
 	"chezmoi",
