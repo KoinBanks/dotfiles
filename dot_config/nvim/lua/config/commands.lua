@@ -176,6 +176,8 @@ vim.api.nvim_create_user_command("PickChezmoi", function()
 	end
 
 	vim.schedule(function()
-		Snacks.picker.files({ title = "Configuration", items = items })
+		Snacks.picker.pick({
+			items = items,
+		})
 	end)
 end, {})
