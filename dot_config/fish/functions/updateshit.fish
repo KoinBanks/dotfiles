@@ -3,4 +3,5 @@ function updateshit
     sudo apt upgrade -y
     brew update
     brew upgrade
+		bunx skills update -g
 end
