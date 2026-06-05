@@ -51,7 +51,7 @@ return {
 			},
 			interactions = {
 				chat = {
-					adapter = { name = "deepseek", model = "deepseek-v4-pro" },
+					adapter = { name = "copilot_fix", model = "gpt-5.4-mini" },
 					opts = {
 						completion_provider = "blink",
 					},
