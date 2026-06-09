@@ -52,7 +52,7 @@ default     = "deepseek-v4-flash"
 api_key_env = "DEEPSEEK_API_KEY"
 balance_url = "https://api.deepseek.com/user/balance"   # optional; wallet-balance endpoint shown in the status bar
 context_window = 1000000   # tokens; compaction triggers near this limit
-price       = { cache_hit = 0.02, input = 1, output = 2, currency = "¥" }   # per 1M tokens
+price       = { cache_hit = 0.000125, input = 0.00625, output = 0.0125, currency = "€" }   # per 1M tokens
 
 [[providers]]
 name        = "deepseek-pro"
@@ -63,7 +63,7 @@ default     = "deepseek-v4-pro"
 api_key_env = "DEEPSEEK_API_KEY"
 balance_url = "https://api.deepseek.com/user/balance"   # optional; wallet-balance endpoint shown in the status bar
 context_window = 1000000   # tokens; compaction triggers near this limit
-price       = { cache_hit = 0.025, input = 3, output = 6, currency = "¥" }   # per 1M tokens
+price       = { cache_hit = 0.00015625, input = 0.01875, output = 0.0375, currency = "€" }   # per 1M tokens
 
 [tools]
 enabled = []   # empty = all built-in tools
@@ -82,8 +82,8 @@ auto_install = true   # fetch the runtime when CodeGraph is enabled but missing
 # Per-call gating. mode = writer fallback when no rule matches: ask|allow|deny.
 # Readers always default to allow. Precedence: deny > ask > allow > fallback.
 # Rules are "ToolName" or "ToolName(glob)"; '*' matches any run, '?' one char.
-mode  = "ask"
-# deny = ["bash(rm -rf*)", "bash(git push*)"]   # hard-blocked in every mode
+mode  = "allow"
+deny = ["bash(rm -rf*)", "bash(git push*)"]   # hard-blocked in every mode
 # allow = ["bash(go test*)", "bash(git status*)"]   # never prompted
 # ask = ["write_file"]   # force a prompt even if otherwise allowed
 
@@ -94,7 +94,7 @@ mode  = "ask"
 # graceful fallback elsewhere); "off" disables it. network allows egress.
 # workspace_root = ""            # default: current working directory
 # allow_write = ["/tmp"]          # extra dirs writers may also modify
-bash    = "enforce"
+bash    = "off"
 network = true
 
 [statusline]
