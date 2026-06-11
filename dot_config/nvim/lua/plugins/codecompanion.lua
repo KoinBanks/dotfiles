@@ -67,7 +67,7 @@ return {
 						return require("codecompanion.adapters").extend("deepseek", {
 							schema = {
 								model = {
-									default = "deepseek-v4-pro",
+									default = "deepseek-v4-flash",
 								},
 							},
 						})
