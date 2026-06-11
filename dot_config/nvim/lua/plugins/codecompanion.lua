@@ -51,35 +51,18 @@ return {
 			},
 			interactions = {
 				chat = {
-					adapter = { name = "copilot_fix", model = "gpt-5.4-mini" },
+					adapter = { name = "copilot", model = "gpt-5.4-mini" },
 					opts = {
 						completion_provider = "blink",
 					},
 				},
 				inline = {
-					adapter = { name = "copilot_fix", model = "gpt-5.4-mini" },
-				},
-				background = {
-					adapter = {
-						name = "copilot_acp",
-						model = "gpt-5.4-mini",
-					},
+					adapter = { name = "copilot", model = "gpt-5.4-mini" },
 				},
 			},
 			adapters = {
 				http = {
 					opts = { show_presets = false },
-					copilot_fix = function()
-						return require("codecompanion.adapters").extend("copilot", {
-							schema = {
-								top_p = {
-									enabled = function()
-										return false
-									end,
-								},
-							},
-						})
-					end,
 					deepseek = function()
 						return require("codecompanion.adapters").extend("deepseek", {
 							schema = {
