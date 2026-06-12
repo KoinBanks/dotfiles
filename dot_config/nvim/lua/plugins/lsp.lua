@@ -49,8 +49,8 @@ return {
 					},
 				},
 				ensure_installed = {
-					"oxlint",
-					"oxfmt",
+					-- "oxlint",
+					-- "oxfmt",
 					"html",
 					"lua_ls",
 					"vue_ls",
