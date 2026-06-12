@@ -63,4 +63,11 @@ wezterm.on("gui-startup", function(cmd)
 	window:gui_window():focus()
 end)
 
+local act = wezterm.action
+
+config.keys = {
+	{ key = "t", mods = "SHIFT|ALT", action = act.SpawnTab("DefaultDomain") },
+	{ key = "x", mods = "SHIFT|ALT", action = act.CloseCurrentPane({ confirm = false }) },
+}
+
 return config
