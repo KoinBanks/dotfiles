@@ -60,6 +60,7 @@ wezterm.on("gui-startup", function(cmd)
 		},
 	})
 	window:gui_window():set_inner_size(width, height)
+	window:gui_window():focus()
 end)
 
 return config
