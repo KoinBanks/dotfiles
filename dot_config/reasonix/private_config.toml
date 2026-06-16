@@ -12,18 +12,6 @@ theme = "auto"   # auto|dark|light; CLI colors only; REASONIX_THEME can override
 # shortcut_layout = "desktop"   # classic|desktop; compatibility setting; Shift+Tab toggles Plan, Ctrl+Y toggles YOLO
 # show_reasoning = true   # CLI: show thinking text by default; false = collapsed (toggle with Ctrl+O)
 
-[desktop]
-# language = "zh"   # desktop UI language; empty/auto = browser/OS auto-detect
-layout_style = "classic"   # desktop layout: classic|workbench
-theme = "auto"   # desktop only: auto|dark|light
-# theme_style = "graphite"   # graphite|aurora|slate|carbon|nocturne|amber and legacy aliases
-close_behavior = "background"   # desktop: quit|background when the window close button is clicked
-status_bar_style = "text"   # desktop: icon|text metric labels in the bottom status bar
-status_bar_items = ["model", "cache", "cache_avg", "session_tokens", "turn_tokens", "turn_cost", "session_turns", "context", "compact", "cost", "balance"]   # desktop: ordered visible bottom status bar items
-check_updates = true   # desktop: check for new versions on startup
-telemetry = true   # desktop: anonymous launch ping (install id + version + OS); never content
-metrics = false   # desktop: opt-in aggregate agent metrics (anonymous signal/bucket counts); never content
-expand_thinking = false   # desktop: show reasoning text expanded by default; false = collapsed
 
 [notifications]
 enabled = false   # system notifications for CLI chat/run; default off
@@ -91,7 +79,7 @@ bash_timeout_seconds = 120   # foreground safety cap; set 0 for no tool-local ca
 
 [codegraph]
 enabled      = false   # built-in MCP server; off by default for first-run sessions
-auto_install = true   # fetch the runtime when CodeGraph is enabled but missing
+auto_install = false   # fetch the runtime when CodeGraph is enabled but missing
 # path       = ""   # empty = cache, then PATH, then a bundle beside reasonix
 
 [builtin_mcp]
@@ -109,83 +97,16 @@ enabled = true   # language server tools; servers launch lazily when used
 # args = []
 # extensions = [".go"]
 
-[skills]
-# paths = ["~/my-skills", "../shared/skills"]   # extra custom skill roots
-# excluded_paths = ["~/.agents/skills"]   # hide convention roots without deleting folders
-# max_depth = 3   # nested scan depth; set 1 for legacy root-only discovery
-# disabled_skills = ["review"]   # hide noisy or unwanted skills
-
 [permissions]
-# Per-call gating. mode = writer fallback when no rule matches: ask|allow|deny.
-# Readers always default to allow. Precedence: deny > ask > allow > fallback.
-# Rules are "Tool" or "Tool(specifier)"; e.g. Bash(go test:*), Edit(src/**).
 mode  = "allow"
-deny = ["Bash(rm -rf*)", "Bash(git push*)"]
-allow = ["Bash(git fetch*)", 'Bash(git diff*)'] # allow git diff for any repo
-# ask = ["Edit(src/**)"]   # force a prompt even if otherwise allowed
+deny  = ["bash(rm -rf*)", "bash(git push*)"]
+allow = ["bash(git diff*)", "bash(git status*)"]
 
 [sandbox]
 # Confine tool blast radius. File-writers (write_file/edit_file/multi_edit/move_file)
 # may only write under workspace_root (empty = current dir) + allow_write.
 # bash = "enforce" (default) jails each command in an OS sandbox (macOS now;
 # graceful fallback elsewhere); "off" disables it. network allows egress.
-# workspace_root = ""            # default: current working directory
-# allow_write = ["/tmp"]          # extra dirs writers may also modify
-bash    = "off"
+workspace_root = ""            # default: current working directory
+allow_write = ["/tmp"]          # extra dirs writers may also modify
 network = true
-
-[statusline]
-# A custom status line: a command whose first stdout line replaces the built-in
-# data row. It receives {"model","contextUsed","contextWindow","cwd"} as JSON on stdin.
-# command = "my-statusline.sh"
-
-# Bot gateway: multi-channel IM bot for QQ, Feishu/Lark, and WeChat.
-[bot]
-enabled = false
-# model = ""   # empty = default_model
-tool_approval_mode = "ask"   # ask|auto|yolo; yolo skips tool approvals only
-max_steps = 25
-debounce_ms = 1500
-
-[bot.allowlist]
-enabled = true
-allow_all = false
-qq_users = []
-feishu_users = []
-weixin_users = []
-qq_groups = []
-feishu_groups = []
-weixin_groups = []
-
-[bot.qq]
-enabled = false
-app_id = ""
-app_secret_env = "QQ_BOT_APP_SECRET"
-sandbox = false
-
-[bot.feishu]
-enabled = false
-app_id = ""
-domain = "feishu"
-app_secret_env = "FEISHU_BOT_APP_SECRET"
-verification_token = ""
-mode = "webhook"
-webhook_port = 8080
-require_mention = true
-
-[bot.weixin]
-enabled = false
-account_id = "default"
-token_env = "WEIXIN_BOT_TOKEN"
-api_base = "https://ilinkai.weixin.qq.com"
-
-# External MCP servers. type: "stdio" (default, a subprocess) | "http" | "sse".
-# ${VAR} / ${VAR:-default} are expanded from the environment in command/args/env/url/headers.
-# [[plugins]]
-# name    = "example"
-# command = "reasonix-plugin-example"
-# [[plugins]]                                  # a remote server over Streamable HTTP
-# name    = "stripe"
-# type    = "http"
-# url     = "https://mcp.stripe.com"
-# headers = { Authorization = "Bearer ${STRIPE_KEY}" }
