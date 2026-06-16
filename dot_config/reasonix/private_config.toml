@@ -84,7 +84,7 @@ auto_install = true   # fetch the runtime when CodeGraph is enabled but missing
 # Rules are "ToolName" or "ToolName(glob)"; '*' matches any run, '?' one char.
 mode  = "allow"
 deny = ["bash(rm -rf*)", "bash(git push*)"]   # hard-blocked in every mode
-# allow = ["bash(go test*)", "bash(git status*)"]   # never prompted
+allow = ['bash(git fetch*)', 'bash(git diff*)']   # never prompted
 # ask = ["write_file"]   # force a prompt even if otherwise allowed
 
 [sandbox]
