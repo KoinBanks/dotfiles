@@ -100,7 +100,6 @@ enabled = true   # language server tools; servers launch lazily when used
 [permissions]
 mode  = "allow"
 deny  = ["bash(rm -rf*)", "bash(git push*)"]
-allow = ["bash(git diff*)", "bash(git status*)"]
 
 [sandbox]
 # Confine tool blast radius. File-writers (write_file/edit_file/multi_edit/move_file)
