@@ -1,0 +1,12 @@
+providers: 
+  webSearch: auto
+theme: 
+  dark: titanium
+  light: light
+modelRoles:
+  default: github-copilot/gpt-5.4-mini
+  smol: github-copilot/gpt-5.4-mini
+  slow: github-copilot/gpt-5.4
+  plan: github-copilot/gpt-5.4
+setupVersion: 1
+
