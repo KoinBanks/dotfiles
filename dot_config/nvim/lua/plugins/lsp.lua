@@ -85,6 +85,11 @@ return {
 				settings = {
 					vtsls = {
 						autoUseWorkspaceTsdk = true,
+						experimental = {
+							completion = {
+								enableServerSideFuzzyMatch = true,
+							},
+						},
 						tsserver = {
 							globalPlugins = {
 								vue_plugin,
