@@ -84,6 +84,7 @@ return {
 				filetypes = ts_filetypes,
 				settings = {
 					vtsls = {
+						autoUseWorkspaceTsdk = true,
 						tsserver = {
 							globalPlugins = {
 								vue_plugin,
