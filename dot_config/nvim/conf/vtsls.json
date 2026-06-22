@@ -1,6 +1,0 @@
-{
-	"$schema": "https://raw.githubusercontent.com/yioneko/vtsls/refs/heads/main/packages/service/configuration.schema.json",
-	"vtsls.autoUseWorkspaceTsdk": true,
-	"javascript.suggest.names": false,
-	"javascript.suggest.autoImports": false
-}
