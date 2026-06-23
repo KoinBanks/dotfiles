@@ -82,9 +82,9 @@ return {
 
 			vim.lsp.config("vtsls", {
 				filetypes = ts_filetypes,
+				---@type lspconfig.settings.vtsls
 				settings = {
 					vtsls = {
-						autoUseWorkspaceTsdk = true,
 						experimental = {
 							completion = {
 								enableServerSideFuzzyMatch = true,
@@ -108,6 +108,7 @@ return {
 			vim.lsp.config("vue_ls", {})
 
 			vim.lsp.config("lua_ls", {
+				---@type lspconfig.settings.lua_ls
 				settings = {
 					Lua = {
 						workspace = {
