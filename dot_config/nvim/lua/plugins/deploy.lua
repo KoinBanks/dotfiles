@@ -39,6 +39,7 @@ return {
 					label = "GeoSuite",
 					globs = {
 						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/js2/fragments/geosuite/**/*.{js,mjs}",
+						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/css2/fragments/geosuite/geoSuite.scss",
 					},
 				},
 				{
