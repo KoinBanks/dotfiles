@@ -1,0 +1,489 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://pi.earendil.works/schemas/agent-settings.json",
+  "title": "Pi Agent Settings",
+  "description": "Complete configuration schema for the pi coding agent's settings.json file. Supports global (~/.pi/agent/settings.json) and project (.pi/settings.json) scopes with deep-merge semantics.",
+  "type": "object",
+  "properties": {
+    "lastChangelogVersion": {
+      "type": "string",
+      "description": "Last version of the changelog shown to the user. Suppresses repeated changelog notifications until the agent is updated. Set automatically by pi.",
+      "examples": ["0.80.2"]
+    },
+
+    "defaultProvider": {
+      "type": "string",
+      "description": "Default LLM provider name (e.g. 'anthropic', 'openai', 'deepseek'). Must correspond to a provider configured in the agent's provider config or in models.json.",
+      "examples": ["anthropic", "openai", "deepseek"]
+    },
+    "defaultModel": {
+      "type": "string",
+      "description": "Default model ID used with the default provider (e.g. 'claude-sonnet-4-20250514', 'gpt-4o', 'deepseek-v4-flash').",
+      "examples": ["claude-sonnet-4-20250514", "gpt-4o", "deepseek-v4-flash"]
+    },
+    "defaultThinkingLevel": {
+      "type": "string",
+      "description": "Default thinking/effort level for reasoning-capable models. Controls how much reasoning effort the model expends on responses.",
+      "enum": ["off", "minimal", "low", "medium", "high", "xhigh"]
+    },
+    "hideThinkingBlock": {
+      "type": "boolean",
+      "default": false,
+      "description": "Hide thinking/reasoning blocks in the TUI output. The model still reasons internally; only the visible block is suppressed."
+    },
+    "thinkingBudgets": {
+      "type": "object",
+      "description": "Custom token budgets per thinking level. Overrides the built-in budget sizes.",
+      "properties": {
+        "minimal": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Token budget for 'minimal' thinking level."
+        },
+        "low": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Token budget for 'low' thinking level."
+        },
+        "medium": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Token budget for 'medium' thinking level."
+        },
+        "high": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Token budget for 'high' thinking level."
+        }
+      },
+      "additionalProperties": false,
+      "examples": [
+        {
+          "minimal": 1024,
+          "low": 4096,
+          "medium": 10240,
+          "high": 32768
+        }
+      ]
+    },
+
+    "theme": {
+      "type": "string",
+      "default": "dark",
+      "description": "UI theme name. Built-in options: 'dark', 'light'. Custom themes can be loaded via the 'themes' setting.",
+      "examples": ["dark", "light"]
+    },
+    "quietStartup": {
+      "type": "boolean",
+      "default": false,
+      "description": "Hide the startup header (logo, version, tips) on interactive launch."
+    },
+    "defaultProjectTrust": {
+      "type": "string",
+      "default": "ask",
+      "description": "Fallback behavior when pi encounters an untrusted project with local settings/skills in non-interactive mode. Global setting only. 'ask' prompts in interactive mode; 'always' trusts silently; 'never' ignores project-local config.",
+      "enum": ["ask", "always", "never"]
+    },
+    "collapseChangelog": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show a condensed (collapsed) changelog after agent updates instead of the full version."
+    },
+    "enableInstallTelemetry": {
+      "type": "boolean",
+      "default": true,
+      "description": "Send an anonymous install/update version ping to pi.dev after install or changelog-detected updates. Does not control update checks."
+    },
+    "enableAnalytics": {
+      "type": "boolean",
+      "default": false,
+      "description": "Opt-in analytics data sharing. Currently only offered during experimental first-time setup (PI_EXPERIMENTAL=1)."
+    },
+    "trackingId": {
+      "type": "string",
+      "description": "Analytics tracking identifier. Auto-generated when enableAnalytics is turned on.",
+      "examples": ["uuid-v4-string"]
+    },
+
+    "doubleEscapeAction": {
+      "type": "string",
+      "default": "tree",
+      "description": "Action triggered by pressing Escape twice quickly in the TUI.",
+      "enum": ["tree", "fork", "none"]
+    },
+    "treeFilterMode": {
+      "type": "string",
+      "default": "default",
+      "description": "Default conversation tree filter mode applied by /tree.",
+      "enum": ["default", "no-tools", "user-only", "labeled-only", "all"]
+    },
+    "editorPaddingX": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Horizontal padding (in characters) applied inside the TUI input editor pane (0-3)."
+    },
+    "autocompleteMaxVisible": {
+      "type": "integer",
+      "default": 5,
+      "minimum": 3,
+      "maximum": 20,
+      "description": "Maximum number of visible items in the autocomplete dropdown (3-20)."
+    },
+    "showHardwareCursor": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show the terminal's hardware cursor while the TUI positions it for IME (input method) support."
+    },
+
+    "httpProxy": {
+      "type": "string",
+      "format": "uri",
+      "description": "HTTP proxy URL. Applied as both HTTP_PROXY and HTTPS_PROXY environment variables for pi's network requests. Global setting only.",
+      "examples": ["http://127.0.0.1:7890"]
+    },
+
+    "warnings": {
+      "type": "object",
+      "description": "Toggle specific warning messages in the TUI.",
+      "properties": {
+        "anthropicExtraUsage": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show a warning when Anthropic subscription auth may incur paid extra usage charges."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "compaction": {
+      "type": "object",
+      "description": "Settings for automatic context compaction. When the conversation exceeds available token space, pi summarizes older messages to free up room.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable auto-compaction of conversation history."
+        },
+        "reserveTokens": {
+          "type": "integer",
+          "default": 16384,
+          "minimum": 0,
+          "description": "Tokens reserved for the LLM response after compaction."
+        },
+        "keepRecentTokens": {
+          "type": "integer",
+          "default": 20000,
+          "minimum": 0,
+          "description": "Number of most recent tokens to keep uncompressed (not summarized) during compaction."
+        }
+      },
+      "additionalProperties": false,
+      "examples": [
+        {
+          "enabled": true,
+          "reserveTokens": 16384,
+          "keepRecentTokens": 20000
+        }
+      ]
+    },
+
+    "branchSummary": {
+      "type": "object",
+      "description": "Settings for conversation branch summarization. Controls how pi summarizes branches when navigating the conversation tree.",
+      "properties": {
+        "reserveTokens": {
+          "type": "integer",
+          "default": 16384,
+          "minimum": 0,
+          "description": "Tokens reserved for the LLM when generating a branch summary."
+        },
+        "skipPrompt": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip the 'Summarize branch?' prompt on /tree navigation. When true, no summary is generated for navigated branches."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "retry": {
+      "type": "object",
+      "description": "Agent-level and provider-level retry settings for transient errors (rate limits, network blips, server errors).",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable automatic agent-level retry on transient errors."
+        },
+        "maxRetries": {
+          "type": "integer",
+          "default": 3,
+          "minimum": 0,
+          "description": "Maximum agent-level retry attempts before giving up."
+        },
+        "baseDelayMs": {
+          "type": "integer",
+          "default": 2000,
+          "minimum": 0,
+          "description": "Base delay for exponential backoff (doubles each retry: 2s, 4s, 8s...)."
+        },
+        "provider": {
+          "type": "object",
+          "description": "Settings for the underlying provider/SDK retry mechanism.",
+          "properties": {
+            "timeoutMs": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Provider/SDK request timeout in milliseconds. Default is SDK-specific."
+            },
+            "maxRetries": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0,
+              "description": "Provider/SDK-level retry attempts. Keep at 0 unless provider-level retries are explicitly needed, as SDK retries may handle rate limits before pi's agent-level retry sees them."
+            },
+            "maxRetryDelayMs": {
+              "type": "integer",
+              "default": 60000,
+              "minimum": 0,
+              "description": "Maximum server-requested retry delay in milliseconds before failing immediately with an informative error. Set to 0 to disable the cap."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false,
+      "examples": [
+        {
+          "enabled": true,
+          "maxRetries": 3,
+          "baseDelayMs": 2000,
+          "provider": {
+            "timeoutMs": 3600000,
+            "maxRetries": 0,
+            "maxRetryDelayMs": 60000
+          }
+        }
+      ]
+    },
+
+    "steeringMode": {
+      "type": "string",
+      "default": "one-at-a-time",
+      "description": "How steering (system-level) messages are delivered to the model. 'all' sends all at once; 'one-at-a-time' sends them incrementally.",
+      "enum": ["all", "one-at-a-time"]
+    },
+    "followUpMode": {
+      "type": "string",
+      "default": "one-at-a-time",
+      "description": "How follow-up messages are delivered to the model. 'all' sends all at once; 'one-at-a-time' sends them incrementally.",
+      "enum": ["all", "one-at-a-time"]
+    },
+    "transport": {
+      "type": "string",
+      "default": "auto",
+      "description": "Preferred transport protocol for providers that support multiple transports. 'auto' lets the provider decide.",
+      "enum": ["sse", "websocket", "websocket-cached", "auto"]
+    },
+    "httpIdleTimeoutMs": {
+      "type": "integer",
+      "default": 300000,
+      "minimum": 0,
+      "description": "HTTP header/body idle timeout in milliseconds. Also used by providers with explicit stream idle timeouts. Set to 0 to disable."
+    },
+    "websocketConnectTimeoutMs": {
+      "type": "integer",
+      "default": 15000,
+      "minimum": 0,
+      "description": "WebSocket connect/open handshake timeout in milliseconds for providers that support WebSocket transports. Set to 0 to disable."
+    },
+
+    "terminal": {
+      "type": "object",
+      "description": "Settings for terminal rendering and image display.",
+      "properties": {
+        "showImages": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show inline images in the terminal (Kitty, iTerm2, Sixel protocols)."
+        },
+        "imageWidthCells": {
+          "type": "integer",
+          "default": 60,
+          "minimum": 0,
+          "description": "Preferred inline image width in terminal cell columns."
+        },
+        "clearOnShrink": {
+          "type": "boolean",
+          "default": false,
+          "description": "Clear empty rows when terminal content shrinks. May cause flicker on some terminals."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "images": {
+      "type": "object",
+      "description": "Settings for image processing before sending to the LLM.",
+      "properties": {
+        "autoResize": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically resize images to a maximum of 2000x2000 pixels before sending to the LLM."
+        },
+        "blockImages": {
+          "type": "boolean",
+          "default": false,
+          "description": "Block all images from being sent to the LLM. The model will never see image attachments."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "shellPath": {
+      "type": "string",
+      "description": "Custom shell executable path for executing bash commands (e.g., for Cygwin on Windows, or a specific shell binary).",
+      "examples": ["/bin/zsh", "C:\\cygwin\\bin\\bash.exe"]
+    },
+    "shellCommandPrefix": {
+      "type": "string",
+      "description": "Prefix prepended to every bash command before execution. Useful for shell setup like alias expansion.",
+      "examples": ["shopt -s expand_aliases"]
+    },
+    "npmCommand": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Command argv for all npm package-manager operations (install, uninstall, dependency installs). Use argv-style entries exactly as the process should be launched. Useful for pinning Node version via wrapper tools like mise or asdf.",
+      "examples": [
+        ["mise", "exec", "node@20", "--", "npm"]
+      ]
+    },
+
+    "sessionDir": {
+      "type": "string",
+      "description": "Directory where session files are stored. Accepts absolute paths, relative paths, and ~ expansion. Precedence: --session-dir > PI_CODING_AGENT_SESSION_DIR > sessionDir.",
+      "examples": [".pi/sessions", "/home/user/my-sessions"]
+    },
+
+    "enabledModels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Glob patterns for model IDs to enable for Ctrl+P cycling /model command. Same format as the --models CLI flag. Supports wildcards.",
+      "examples": [
+        ["claude-*", "gpt-4o", "gemini-2*"]
+      ]
+    },
+
+    "markdown": {
+      "type": "object",
+      "description": "Settings for markdown rendering in the TUI.",
+      "properties": {
+        "codeBlockIndent": {
+          "type": "string",
+          "default": "  ",
+          "description": "Indentation string used for code blocks inside markdown output."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "packages": {
+      "type": "array",
+      "description": "Pi packages (npm or git) to load resources from. Each item can be a package source string (loads all resources) or an object filtering which resources to load.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Package source string. npm format: 'npm:@scope/pkg@version', git format: 'git:github.com/user/repo@ref' or full URL.",
+            "examples": ["pi-skills", "@org/my-extension", "npm:@scope/pkg@1.0.0", "git:github.com/user/repo@v1"]
+          },
+          {
+            "type": "object",
+            "description": "Package with resource filtering: specify exactly which extensions, skills, prompts, and themes to load from the package.",
+            "properties": {
+              "source": {
+                "type": "string",
+                "description": "Package source string."
+              },
+              "skills": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Skill names to load from this package."
+              },
+              "extensions": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Extension names to load from this package."
+              },
+              "prompts": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Prompt template names to load from this package."
+              },
+              "themes": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Theme names to load from this package."
+              }
+            },
+            "required": ["source"],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "examples": [
+        ["pi-skills"],
+        [
+          { "source": "my-org/my-pkg", "skills": ["brave-search", "transcribe"], "extensions": [] }
+        ]
+      ]
+    },
+
+    "extensions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Local extension file paths or directories. Supports glob patterns, plus/minus prefix for force-include/exclude. Paths in global settings resolve relative to ~/.pi/agent; paths in project settings resolve relative to .pi/.",
+      "examples": ["./my-extensions/my-tool.js", "extensions/*.js", "+specific-extension.js"]
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Local skill file paths or directories. Supports glob patterns and exclusion (! prefix). Paths in global settings resolve relative to ~/.pi/agent; paths in project settings resolve relative to .pi/.",
+      "examples": ["./skills/my-skill", "skills/*"]
+    },
+    "prompts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Local prompt template file paths or directories. Supports glob patterns. Paths in global settings resolve relative to ~/.pi/agent; paths in project settings resolve relative to .pi/.",
+      "examples": ["./prompts/custom"]
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Local theme file paths or directories. Supports glob patterns. Paths in global settings resolve relative to ~/.pi/agent; paths in project settings resolve relative to .pi/.",
+      "examples": ["./themes/my-theme.json"]
+    },
+    "enableSkillCommands": {
+      "type": "boolean",
+      "default": true,
+      "description": "Register loaded skills as /skill:name slash commands for easy access in the TUI."
+    }
+  },
+
+  "additionalProperties": false
+}
