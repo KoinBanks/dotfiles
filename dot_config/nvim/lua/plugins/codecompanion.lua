@@ -60,37 +60,6 @@ return {
 					adapter = { name = "copilot", model = "gpt-5.4-mini" },
 				},
 			},
-			adapters = {
-				http = {
-					opts = { show_presets = false },
-					deepseek = function()
-						return require("codecompanion.adapters").extend("deepseek", {
-							schema = {
-								model = {
-									default = "deepseek-v4-flash",
-								},
-							},
-						})
-					end,
-					openrouter = function()
-						return require("codecompanion.adapters").extend(
-							"openai_compatible",
-							{
-								env = {
-									url = "https://openrouter.ai/api",
-									api_key = vim.env.OPENROUTER_API_KEY,
-									chat_url = "/v1/chat/completions",
-								},
-								schema = {
-									model = {
-										default = "deepseek/deepseek-v4-flash",
-									},
-								},
-							}
-						)
-					end,
-				},
-			},
 		})
 	end,
 }
