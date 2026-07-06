@@ -43,9 +43,9 @@ return {
 					},
 				},
 				{
-					label = "GeoSuite Build",
+					label = "IMS Build",
 					globs = {
-						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/build2/dist/geosuite/**.*",
+						"/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/build2/dist/**.*",
 					},
 				},
 			},
@@ -57,10 +57,6 @@ return {
 						local skip_extensions = { "ts", "lock", "sh", "md", "java" }
 
 						if context.source:find("/node_modules/") then
-							return false
-						end
-
-						if context.source:find("/build2/") then
 							return false
 						end
 
