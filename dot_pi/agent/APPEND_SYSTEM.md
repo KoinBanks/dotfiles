@@ -1,1 +1,1 @@
-/caveman full
+/skill:caveman full
