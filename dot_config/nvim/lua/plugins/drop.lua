@@ -1,8 +1,6 @@
 return {
 	"folke/drop.nvim",
-	enabled = function()
-		return vim.g.AT_WORK
-	end,
+	enabled = vim.env.AT_WORK == "true",
 	opts = {
 		screensaver = 1000 * 60 * 2,
 	},
