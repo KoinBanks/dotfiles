@@ -58,7 +58,7 @@ return {
 					tools = {
 						["read_file"] = {
 							opts = {
-								require_approval_before = true,
+								require_approval_before = false,
 							},
 						},
 					},
