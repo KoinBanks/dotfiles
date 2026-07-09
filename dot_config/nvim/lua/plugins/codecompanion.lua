@@ -55,6 +55,13 @@ return {
 					opts = {
 						completion_provider = "blink",
 					},
+					tools = {
+						["read_file"] = {
+							opts = {
+								require_approval_before = true,
+							},
+						},
+					},
 				},
 				inline = {
 					adapter = { name = "copilot", model = "gpt-5.4-mini" },
