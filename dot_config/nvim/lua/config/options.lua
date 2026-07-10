@@ -6,6 +6,7 @@ vim.g.maplocalleader = "\\"
 if vim.g.neovide then
 	vim.g.snacks_animate = false
 	vim.g.neovide_fullscreen = true
+	vim.g.neovide_progress_bar_enabled = false
 	vim.api.nvim_set_keymap(
 		"n",
 		"<F11>",
