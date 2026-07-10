@@ -51,7 +51,7 @@ return {
 			},
 			interactions = {
 				chat = {
-					adapter = { name = "copilot", model = "gpt-5.6-luna" },
+					adapter = { name = "copilot_fix", model = "gpt-5.6-luna" },
 					opts = {
 						completion_provider = "blink",
 					},
@@ -64,7 +64,22 @@ return {
 					},
 				},
 				inline = {
-					adapter = { name = "copilot", model = "gpt-5.6-luna" },
+					adapter = { name = "copilot_fix", model = "gpt-5.6-luna" },
+				},
+			},
+			adapters = {
+				http = {
+					copilot_fix = function()
+						return require("codecompanion.adapters").extend("copilot", {
+							schema = {
+								top_p = {
+									enabled = function()
+										return false
+									end,
+								},
+							},
+						})
+					end,
 				},
 			},
 		})
