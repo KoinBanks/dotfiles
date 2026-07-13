@@ -93,7 +93,7 @@ return {
 						},
 						tsserver = {
 							globalPlugins = {
-								vue_plugin,
+								-- vue_plugin,
 							},
 						},
 					},
