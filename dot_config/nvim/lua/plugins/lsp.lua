@@ -82,6 +82,16 @@ return {
 
 			vim.lsp.config("vtsls", {
 				filetypes = ts_filetypes,
+				root_dir = function(bufnr, on_dir)
+					local root_markers = {
+						"package.json",
+						"bunfig.toml",
+					}
+
+					local project_root = vim.fs.root(bufnr, root_markers)
+
+					on_dir(project_root or vim.fn.getcwd())
+				end,
 				---@type lspconfig.settings.vtsls
 				settings = {
 					vtsls = {
@@ -105,8 +115,6 @@ return {
 					},
 				},
 			})
-
-			vim.lsp.config("vue_ls", {})
 
 			vim.lsp.config("lua_ls", {
 				---@type lspconfig.settings.lua_ls
