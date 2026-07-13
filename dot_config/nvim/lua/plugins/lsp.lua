@@ -85,6 +85,7 @@ return {
 				---@type lspconfig.settings.vtsls
 				settings = {
 					vtsls = {
+						autoUseWorkspaceTsdk = true,
 						experimental = {
 							completion = {
 								enableServerSideFuzzyMatch = true,
