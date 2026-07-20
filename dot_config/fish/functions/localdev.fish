@@ -1,4 +1,3 @@
 function localdev
-    cd ~/develop/repos/express-proxy
-    bun start $argv
+    bun --cwd=/home/patrik/develop/repos/express-proxy start $argv
 end
