@@ -15,3 +15,6 @@ Rules:
 * Only point out problems, do not mention changes which are sound
 * Ignore trailing commas
 * Generate summary at the end
+
+Save the review into a folder obtained by running `wslupath -D` and name it `REVIEW-<branch_name>.md`. 
+Make sure `<branch_name>` contains no special characters.
