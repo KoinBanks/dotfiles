@@ -1,9 +1,10 @@
 {
   "$schema": "./settings.schema.json",
-  "lastChangelogVersion": "0.80.10",
+  "lastChangelogVersion": "0.81.0",
   "defaultProvider": "deepseek",
   "defaultModel": "deepseek-v4-flash",
   "editorPaddingX": 1,
+  "theme": "dark",
   "packages": [
     "npm:@xynogen/pix-optimizer"
   ]
