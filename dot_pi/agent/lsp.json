@@ -1,1 +1,19 @@
-{}
+{
+  "version": 1,
+  "servers": [
+    {
+      "id": "vtsls",
+      "enabled": true,
+      "include": ["**/*.ts"],
+      "rootMarkers": ["package.json"],
+      "bin": "vtsls",
+      "args": ["--stdio"],
+      "cwd": "{root}",
+      "languageIdByExtension": { ".ts": "typescript" },
+      "startupTimeoutMs": 45000,
+      "diagnosticsWaitMs": 1500,
+      "initializationOptions": {},
+      "settings": {}
+    }
+  ]
+}
