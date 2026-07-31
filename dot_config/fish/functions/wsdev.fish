@@ -1,5 +1,5 @@
 function wsdev
-    set -l build_command "bun --cwd=/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/build2 build.ts --include=geosuite --watch"
+    set -l build_command "bun --cwd=/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/build2 build.ts --include=geosuite,mapEditor --watch"
     if string match -q '*10.111.*' -- $argv[1]
         set build_command "$build_command --host $argv[1]"
     end
