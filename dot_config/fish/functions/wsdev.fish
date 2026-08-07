@@ -1,5 +1,5 @@
 function wsdev
-    set -l build_command "bun --cwd=/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/build2 build.ts --include=geosuite,mapEditor --watch"
+    set -l build_command "bun --cwd=/home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp/build2 build.ts --watch"
     if contains -- --deploy $argv
         set build_command "$build_command --host $argv[1]"
     end
