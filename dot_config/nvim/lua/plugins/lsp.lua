@@ -53,12 +53,12 @@ return {
 					"oxfmt",
 					"html",
 					"lua_ls",
-					"vue_ls",
+					-- "vue_ls",
 					"fish_lsp",
 					-- "vtsls",
 					"stylua",
 					"jsonls",
-					"tsgo",
+					-- "tsgo",
 				},
 			})
 
@@ -117,18 +117,18 @@ return {
 			-- 	},
 			-- })
 
-			vim.lsp.config("tsgo", {
-				root_dir = function(bufnr, on_dir)
-					local root_markers = {
-						"package.json",
-						"bunfig.toml",
-					}
-
-					local project_root = vim.fs.root(bufnr, root_markers)
-
-					on_dir(project_root or vim.fn.getcwd())
-				end,
-			})
+			-- vim.lsp.config("tsgo", {
+			-- 	root_dir = function(bufnr, on_dir)
+			-- 		local root_markers = {
+			-- 			"package.json",
+			-- 			"bunfig.toml",
+			-- 		}
+			--
+			-- 		local project_root = vim.fs.root(bufnr, root_markers)
+			--
+			-- 		on_dir(project_root or vim.fn.getcwd())
+			-- 	end,
+			-- })
 
 			vim.lsp.config("lua_ls", {
 				---@type lspconfig.settings.lua_ls
@@ -157,6 +157,15 @@ return {
 					},
 				},
 			})
+
+			-- local lsp_configs = {}
+			--
+			-- for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
+			-- 	local server_name = vim.fn.fnamemodify(f, ":t:r")
+			-- 	table.insert(lsp_configs, server_name)
+			-- end
+
+			vim.lsp.enable({ "tsc" })
 		end,
 	},
 }
