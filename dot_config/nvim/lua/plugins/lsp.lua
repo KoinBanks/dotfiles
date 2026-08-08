@@ -164,8 +164,6 @@ return {
 			-- 	local server_name = vim.fn.fnamemodify(f, ":t:r")
 			-- 	table.insert(lsp_configs, server_name)
 			-- end
-
-			vim.lsp.enable({ "tsc" })
 		end,
 	},
 }
