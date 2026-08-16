@@ -2,12 +2,12 @@
   "version": 1,
   "servers": [
     {
-      "id": "vtsls",
+      "id": "ts7",
       "enabled": true,
       "include": ["**/*.ts"],
       "rootMarkers": ["package.json"],
-      "bin": "vtsls",
-      "args": ["--stdio"],
+      "bin": "./node_modules/.bin/tsc",
+      "args": ["--lsp", "--stdio"],
       "cwd": "{root}",
       "languageIdByExtension": { ".ts": "typescript" },
       "startupTimeoutMs": 45000,
