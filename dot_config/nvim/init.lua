@@ -1,3 +1,3 @@
-vim.lsp.enable({ "ts7" })
+-- vim.lsp.enable({ "ts7" })
 
 require("config.lazy")

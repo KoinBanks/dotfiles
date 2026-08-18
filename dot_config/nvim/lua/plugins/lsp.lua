@@ -58,6 +58,7 @@ return {
 					-- "vtsls",
 					"stylua",
 					"jsonls",
+					"tsc",
 					-- "tsgo",
 				},
 			})
