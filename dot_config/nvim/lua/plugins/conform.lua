@@ -23,6 +23,7 @@ return {
 			markdown = { "oxfmt", "prettierd" },
 			html = { "oxfmt", "prettierd" },
 			css = { "oxfmt", "prettierd" },
+			scss = { "oxfmt", "prettierd" },
 			yaml = { "oxfmt", "prettierd" },
 			vue = { "oxfmt", "biome" },
 		},
