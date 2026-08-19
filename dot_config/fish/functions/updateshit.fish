@@ -13,5 +13,5 @@ function updateshit
 		pi update --extensions
 
 		chezmoi add ~/.pi/agent/settings.json
-		chezmoi add ~~/.agents/.skill-lock.json
+		chezmoi add ~/.agents/.skill-lock.json
 end
