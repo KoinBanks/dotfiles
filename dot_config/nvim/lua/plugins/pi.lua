@@ -1,0 +1,21 @@
+return {
+	"pablopunk/pi.nvim",
+	opts = {
+		provider = "github-copilot",
+		model = "gpt-5.6-luna",
+		thinking = "xhigh",
+		context = {
+			selection = {
+				surrounding_lines = 0,
+			},
+		},
+	},
+	keys = {
+		{
+			"<C-a>",
+			":PiAskSelection<CR>",
+			mode = { "v" },
+			desc = "Pi Ask Selection",
+		},
+	},
+}

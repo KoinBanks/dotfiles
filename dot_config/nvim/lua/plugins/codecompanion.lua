@@ -9,12 +9,12 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	keys = {
-		{
-			"<C-a>",
-			":CodeCompanion ",
-			mode = { "v" },
-			desc = "Code Companion inline edit",
-		},
+		-- {
+		-- 	"<C-a>",
+		-- 	":CodeCompanion ",
+		-- 	mode = { "v" },
+		-- 	desc = "Code Companion inline edit",
+		-- },
 		{
 			"<leader>aa",
 			":CodeCompanionChat Toggle<CR>",
