@@ -2,7 +2,7 @@ return {
 	"olimorris/codecompanion.nvim",
 	-- dir = "~/develop/repos/codecompanion.nvim",
 	-- dev = true,
-	branch = "main",
+	version = "^19.0.0",
 	enabled = true,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
