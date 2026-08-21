@@ -1,5 +1,7 @@
 return {
 	"olimorris/codecompanion.nvim",
+	-- dir = "~/develop/repos/codecompanion.nvim",
+	-- dev = true,
 	branch = "main",
 	enabled = true,
 	dependencies = {
