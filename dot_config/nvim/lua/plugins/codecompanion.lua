@@ -5,7 +5,7 @@ return {
 	version = "^19.0.0",
 	enabled = true,
 	dependencies = {
-		"nvim-lua/plenary.nvim",
+		{ "nvim-lua/plenary.nvim", branch = "master" },
 		"nvim-treesitter/nvim-treesitter",
 	},
 	keys = {

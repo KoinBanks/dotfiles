@@ -4,7 +4,7 @@ return {
 	lazy = true,
 	dependencies = {
 		"MunifTanjim/nui.nvim",
-		"nvim-lua/plenary.nvim",
+		{ "nvim-lua/plenary.nvim", branch = "master" },
 		"sindrets/diffview.nvim",
 		"stevearc/dressing.nvim",
 		"nvim-tree/nvim-web-devicons",

@@ -2,7 +2,10 @@ return {
 	"KoinBanks/deploy.nvim",
 	dir = "~/develop/repos/deploy.nvim",
 	dev = true,
-	dependencies = { "nvim-lua/plenary.nvim", "nvim-neotest/nvim-nio" },
+	dependencies = {
+		{ "nvim-lua/plenary.nvim", branch = "master" },
+		"nvim-neotest/nvim-nio",
+	},
 	event = "VeryLazy",
 	keys = {
 		{
