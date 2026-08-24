@@ -184,8 +184,16 @@ end, {})
 
 vim.api.nvim_create_user_command("SendToPI", function(opts)
 	local file = vim.fn.expand("%:p")
-	local start_line = vim.fn.line("'<")
-	local end_line = vim.fn.line("'>")
+	local start_line
+	local end_line
+
+	if opts.range > 0 then
+		start_line = vim.fn.line("'<")
+		end_line = vim.fn.line("'>")
+	else
+		start_line = vim.fn.line("w0")
+		end_line = vim.fn.line("w$")
+	end
 
 	local context = vim.fn.json_encode({
 		file = file,
@@ -197,6 +205,6 @@ vim.api.nvim_create_user_command("SendToPI", function(opts)
 
 	Snacks.terminal("pi " .. vim.fn.shellescape(prompt), {
 		cwd = vim.fn.getcwd(),
-		auto_close = false,
+		auto_close = true,
 	})
 end, { nargs = "+", range = true })
