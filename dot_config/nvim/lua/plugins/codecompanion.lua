@@ -53,7 +53,7 @@ return {
 			},
 			interactions = {
 				chat = {
-					adapter = { name = "copilot_acp", model = "gpt-5.6-luna" },
+					adapter = { name = "copilot", model = "gpt-5.6-luna" },
 					opts = {
 						completion_provider = "blink",
 					},
@@ -66,7 +66,7 @@ return {
 					},
 				},
 				inline = {
-					adapter = { name = "copilot_acp", model = "gpt-5.6-luna" },
+					adapter = { name = "copilot", model = "gpt-5.6-luna" },
 				},
 			},
 			-- adapters = {
