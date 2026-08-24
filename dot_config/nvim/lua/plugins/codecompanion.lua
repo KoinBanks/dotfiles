@@ -1,8 +1,8 @@
 return {
 	"olimorris/codecompanion.nvim",
 	dir = "~/develop/repos/codecompanion.nvim",
-	dev = true,
-	version = "^21.0.0",
+	dev = false,
+	version = "^19.0.0",
 	enabled = true,
 	dependencies = {
 		{ "nvim-lua/plenary.nvim", branch = "master" },
@@ -53,7 +53,7 @@ return {
 			},
 			interactions = {
 				chat = {
-					adapter = { name = "copilot_acp", model = "gpt-3.6-luna" },
+					adapter = { name = "copilot_acp", model = "gpt-5.6-luna" },
 					opts = {
 						completion_provider = "blink",
 					},
@@ -66,7 +66,7 @@ return {
 					},
 				},
 				inline = {
-					adapter = { name = "copilot_acp", model = "gpt-3.6-luna" },
+					adapter = { name = "copilot_acp", model = "gpt-5.6-luna" },
 				},
 			},
 			-- adapters = {
