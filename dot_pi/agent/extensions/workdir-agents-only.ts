@@ -1,4 +1,4 @@
-import { resolve } from "node:path";
+import { basename, resolve } from "node:path";
 import type {
 	BuildSystemPromptOptions,
 	ExtensionAPI,
@@ -20,8 +20,13 @@ export function filterWorkdirAgents(
 ): string {
 	const contextFiles = options.contextFiles ?? [];
 	const allowedPath = resolve(options.cwd, "AGENTS.md");
-	const allowedFiles = contextFiles.filter((file) => resolve(file.path) === allowedPath);
-	const droppedFiles = contextFiles.filter((file) => resolve(file.path) !== allowedPath);
+	const isAgentsFile = (file: ContextFile) => basename(file.path) === "AGENTS.md";
+	const allowedFiles = contextFiles.filter(
+		(file) => !isAgentsFile(file) || resolve(file.path) === allowedPath,
+	);
+	const droppedFiles = contextFiles.filter(
+		(file) => isAgentsFile(file) && resolve(file.path) !== allowedPath,
+	);
 
 	if (droppedFiles.length === 0) return systemPrompt;
 
