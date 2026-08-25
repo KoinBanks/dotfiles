@@ -6,7 +6,6 @@
   "defaultThinkingLevel": "xhigh",
   "editorPaddingX": 1,
   "theme": "dark",
-	"skills": ["!skills/caveman/**"],
   "packages": [
     "npm:@xynogen/pix-optimizer",
     "npm:pi-web-access",
