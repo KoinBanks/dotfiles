@@ -188,15 +188,19 @@ vim.api.nvim_create_user_command("SendToPI", function(opts)
 		start_line, end_line = opts.line1, opts.line2
 	end
 
-	local prompt = ("Inspect this context and resolve the query:\n\nFile: %s\nStart line: %s\nEnd line: %s\n\nQuery: %s"):format(
+	local prompt = ("Read this exact context and resolve the query:\n\nFile: %s\nStart line: %s\nEnd line: %s\n\nQuery: %s"):format(
 		vim.fn.expand("%:p"),
 		start_line,
 		end_line,
 		opts.args
 	)
 
-	Snacks.terminal("pi " .. vim.fn.shellescape(prompt), {
+	Snacks.terminal({ "pi", prompt }, {
 		cwd = vim.fn.getcwd(),
 		auto_close = true,
 	})
-end, { nargs = "+", range = true })
+end, {
+	nargs = "+",
+	range = true,
+	desc = "Send visible or selected context to pi",
+})
