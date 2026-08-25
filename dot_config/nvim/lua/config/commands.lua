@@ -188,7 +188,7 @@ vim.api.nvim_create_user_command("SendToPI", function(opts)
 		start_line, end_line = opts.line1, opts.line2
 	end
 
-	local prompt = ("Read this exact context and resolve the query:\n\nFile: %s\nLines: %d-%d (1-based)\n\nQuery: %s"):format(
+	local prompt = ("Read these exact lines and resolve the query:\n\nFile: %s\nLines: %d-%d (1-based)\n\nQuery: %s"):format(
 		vim.fn.expand("%:p"),
 		start_line,
 		end_line,
