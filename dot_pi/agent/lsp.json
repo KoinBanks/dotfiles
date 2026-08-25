@@ -2,11 +2,11 @@
   "version": 1,
   "servers": [
     {
-      "id": "ts7",
+      "id": "tsc",
       "enabled": true,
       "include": ["**/*.ts"],
       "rootMarkers": ["package.json"],
-      "bin": "./node_modules/.bin/tsc",
+      "bin": "~/.local/share/nvim/mason/bin/tsc",
       "args": ["--lsp", "--stdio"],
       "cwd": "{root}",
       "languageIdByExtension": { ".ts": "typescript" },
