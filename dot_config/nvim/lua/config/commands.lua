@@ -188,14 +188,10 @@ vim.api.nvim_create_user_command("SendToPI", function(opts)
 		start_line, end_line = opts.line1, opts.line2
 	end
 
-	local context = vim.fn.json_encode({
-		file = vim.fn.expand("%:p"),
-		start_line = start_line,
-		end_line = end_line,
-	})
-
-	local prompt = ("Work on the provided context.\n\nContext: %s\n\nUser question: %s"):format(
-		context,
+	local prompt = ("Inspect this context and resolve the query:\n\nFile: %s\nStart line: %s\nEnd line: %s\n\nQuery: %s"):format(
+		vim.fn.expand("%:p"),
+		start_line,
+		end_line,
 		opts.args
 	)
 
