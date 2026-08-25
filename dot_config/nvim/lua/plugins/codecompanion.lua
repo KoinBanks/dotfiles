@@ -11,7 +11,7 @@ return {
 	keys = {
 		{
 			"<C-a>",
-			":CodeCompanion ",
+			":SendToPI ",
 			mode = { "v" },
 			desc = "Code Companion inline edit",
 		},
