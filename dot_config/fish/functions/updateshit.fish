@@ -1,17 +1,22 @@
 function updateshit
-		chezmoi update
+    # Save files changed by previous update before applying repo changes.
+    chezmoi add ~/.pi/agent/settings.json ~/.agents/.skill-lock.json
+    chezmoi update
 
-    sudo apt update
-    sudo apt upgrade -y
+    if status is-interactive
+        sudo apt update
+        sudo apt upgrade -y
+    else
+        echo "Skipping apt updates: sudo needs interactive terminal."
+    end
 
     brew update
     brew upgrade -y
 
-		bunx skills update -g
+    bunx skills update -g
 
-		pi update
-		pi update --extensions
+    pi update
+    pi update --extensions
 
-		chezmoi add ~/.pi/agent/settings.json
-		chezmoi add ~/.agents/.skill-lock.json
+    chezmoi add ~/.pi/agent/settings.json ~/.agents/.skill-lock.json
 end
