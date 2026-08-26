@@ -16,12 +16,7 @@ vim.keymap.set("v", "p", '"_dP')
 -- vim.keymap.set("n", "I", "A", { noremap = true, silent = true })
 
 -- C-a in visual mode should do ":SendToPi "
-vim.keymap.set(
-	"v",
-	"<C-a>",
-	":SendToPi ",
-	{ silent = true, desc = "Send selection to Pi" }
-)
+vim.keymap.set("v", "<C-a>", ":SendToPi ", { desc = "Send selection to Pi" })
 
 vim.keymap.set(
 	{ "i", "n" },
