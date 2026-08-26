@@ -200,7 +200,7 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 		"",
 		("Query: %s"):format(opts.args),
 		"",
-		"Resolve the query based on the provided context. Do not re-read the provided context.",
+		"The code block above is context copied from the stated file and line range. Use it to resolve the query; do not re-read those lines unless additional context is required.",
 	}, "\n")
 
 	Snacks.terminal(
