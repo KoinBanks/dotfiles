@@ -190,6 +190,7 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 
 	local code =
 		table.concat(vim.api.nvim_buf_get_lines(0, line1 - 1, line2, false), "\n")
+
 	local prompt = table.concat({
 		("```%s"):format(vim.bo.filetype),
 		code,
