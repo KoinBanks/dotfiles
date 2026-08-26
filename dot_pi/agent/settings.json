@@ -7,8 +7,8 @@
   "editorPaddingX": 1,
   "theme": "dark",
   "packages": [
-    "npm:@xynogen/pix-optimizer",
     "npm:pi-web-access",
-    "npm:pi-lsp"
+    "npm:pi-lsp",
+    "npm:@xynogen/pix-optimizer"
   ]
 }
