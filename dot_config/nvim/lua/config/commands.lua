@@ -183,22 +183,30 @@ vim.api.nvim_create_user_command("PickChezmoi", function()
 end, {})
 
 vim.api.nvim_create_user_command("SendToPi", function(opts)
-	local start_line, end_line = vim.fn.line("w0"), vim.fn.line("w$")
+	local line1, line2 = vim.fn.line("w0"), vim.fn.line("w$")
 	if opts.range > 0 then
-		start_line, end_line = opts.line1, opts.line2
+		line1, line2 = opts.line1, opts.line2
 	end
 
-	local prompt = ("Read these exact lines and resolve the query:\n\nFile: %s\nLines: %d-%d (1-based)\n\nQuery: %s"):format(
-		vim.fn.expand("%:p"),
-		start_line,
-		end_line,
-		opts.args
-	)
+	local code =
+		table.concat(vim.api.nvim_buf_get_lines(0, line1 - 1, line2, false), "\n")
+	local prompt = table.concat({
+		("```%s"):format(vim.bo.filetype),
+		code,
+		"```",
+		"",
+		("File: %s"):format(vim.fn.expand("%:p")),
+		("Lines: %d-%d (1-based)"):format(line1, line2),
+		"",
+		("Query: %s"):format(opts.args),
+		"",
+		"Resolve the query based on the provided context. Do not re-read the provided context.",
+	}, "\n")
 
-	Snacks.terminal({ "pi", prompt }, {
-		cwd = vim.fn.getcwd(),
-		auto_close = true,
-	})
+	Snacks.terminal(
+		{ "pi", prompt },
+		{ cwd = vim.fn.getcwd(), auto_close = true }
+	)
 end, {
 	nargs = "+",
 	range = true,
