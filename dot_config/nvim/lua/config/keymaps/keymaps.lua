@@ -10,12 +10,6 @@ vim.keymap.set("i", "jj", "<Esc>", { desc = "Exit insert mode" })
 -- Paste without overwriting the default register
 vim.keymap.set("v", "p", '"_dP')
 
--- vim.keymap.set("n", "a", "i", { noremap = true, silent = true })
--- vim.keymap.set("n", "A", "I", { noremap = true, silent = true })
--- vim.keymap.set("n", "i", "a", { noremap = true, silent = true })
--- vim.keymap.set("n", "I", "A", { noremap = true, silent = true })
-
--- C-a in visual mode should do ":SendToPi "
 vim.keymap.set("v", "<C-a>", ":SendToPi ", { desc = "Send selection to Pi" })
 
 vim.keymap.set(
