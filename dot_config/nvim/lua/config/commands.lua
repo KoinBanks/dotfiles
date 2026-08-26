@@ -203,10 +203,11 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 		"The code block above is context copied from the stated file and line range. Use it to resolve the query; do not re-read those lines unless additional context is required.",
 	}, "\n")
 
-	Snacks.terminal(
-		{ "pi", prompt },
-		{ cwd = vim.fn.getcwd(), auto_close = true }
-	)
+	Snacks.terminal({ "pi", prompt }, {
+		cwd = vim.fn.getcwd(),
+		auto_close = true,
+		win = { position = "right" },
+	})
 end, {
 	nargs = "+",
 	range = true,
