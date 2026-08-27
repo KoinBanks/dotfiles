@@ -1,3 +1,4 @@
-- Do not search, inspect, or retrieve files from the codebase when answering conceptual, general, or explanatory questions.
-- Use `ripgrep (rg)` instead of `grep`.
+- When asked conceptual, general or explanatory question, just answer without reading in the workdir.
 - Always work on the current working tree. Do not search git history.
+- Reading anything from `node_modules` is disallowed.
+- Use `rg (ripgrep)` instead of `grep`.
