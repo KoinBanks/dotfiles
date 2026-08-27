@@ -1,4 +1,3 @@
-
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 export default function (pi: ExtensionAPI) {
@@ -12,11 +11,14 @@ export default function (pi: ExtensionAPI) {
 		let modifiedSystemPrompt = originalSystemPrompt;
 
 		for (const contextFile of contextToRemove || []) {
-			const regex = new RegExp(`<project_instructions path="${contextFile.path}">[\\s\\S]*?<\\/project_instructions>`, "g");
+			const path = contextFile.path.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+			const regex = new RegExp(
+				`^[\\t ]*<project_instructions path="${path}">[\\s\\S]*?<\\/project_instructions>[\\t ]*(?:\\r?\\n|$)`,
+				"gm",
+			);
 			modifiedSystemPrompt = modifiedSystemPrompt.replace(regex, "");
 		}
 
 		return {systemPrompt: modifiedSystemPrompt};
 	});
 }
-
