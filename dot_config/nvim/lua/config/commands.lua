@@ -195,11 +195,7 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 		"",
 		("Query: %s"):format(opts.args),
 		"",
-		("Read exactly lines %d-%d from %s and use them to resolve the query."):format(
-			line1,
-			line2,
-			file
-		),
+		"Read exactly the mentioned lines and use them to resolve the query.",
 	}, "\n")
 
 	Snacks.terminal({ "pi", prompt }, {
