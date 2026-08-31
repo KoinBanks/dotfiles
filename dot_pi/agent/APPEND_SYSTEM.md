@@ -1,4 +1,4 @@
-- When asked conceptual, general or explanatory question, just answer without reading in the workdir.
+- When asked conceptual, general or explanatory question, just answer without reading anything in the workdir.
 - Always work on the current working tree. Do not search git history.
 - Reading anything from `node_modules` is forbidden.
 - Use `rg (ripgrep)` instead of `grep`.
