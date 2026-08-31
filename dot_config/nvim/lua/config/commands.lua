@@ -189,14 +189,13 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 	end
 
 	local file = vim.fn.expand("%:p")
-	local prompt = table.concat({
-		("File: %s"):format(file),
-		("Lines: %d-%d (1-based)"):format(line1, line2),
-		"",
-		("Query: %s"):format(opts.args),
-		"",
-		"Read exactly the mentioned lines and use them to resolve the query.",
-	}, "\n")
+
+	local prompt = ("Read lines %d-%d of file %s and use them as context for the following query: %s"):format(
+		line1,
+		line2,
+		file,
+		opts.args
+	)
 
 	Snacks.terminal({ "pi", prompt }, {
 		cwd = vim.fn.getcwd(),
