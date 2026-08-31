@@ -1,6 +1,6 @@
 {
   "$schema": "./settings.schema.json",
-  "lastChangelogVersion": "0.84.3",
+  "lastChangelogVersion": "0.84.4",
   "defaultProvider": "github-copilot",
   "defaultModel": "gpt-5.6-luna",
   "defaultThinkingLevel": "xhigh",
@@ -8,7 +8,6 @@
   "theme": "dark",
   "packages": [
     "npm:pi-web-access",
-    "npm:pi-lsp",
     "npm:@xynogen/pix-optimizer"
   ]
 }
