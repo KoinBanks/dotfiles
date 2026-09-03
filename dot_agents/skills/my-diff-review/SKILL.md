@@ -1,6 +1,7 @@
 ---
 name: my-diff-review
 description: Reviews changes between target branch and origin/master
+disable-model-invocation: true
 ---
 You will receive a <branch_name> as an argument. Run every command in the current workspace directory. 
 Do not `cd` into any other folder or change the working directory for the session.
