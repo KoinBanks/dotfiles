@@ -9,6 +9,7 @@
   "packages": [
     "npm:pi-web-access",
     "npm:@xynogen/pix-optimizer",
-    "npm:@ff-labs/pi-fff"
+    "npm:@ff-labs/pi-fff",
+    "npm:pi-subagents-lite"
   ]
 }
