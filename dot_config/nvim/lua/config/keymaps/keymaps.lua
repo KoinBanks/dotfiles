@@ -12,6 +12,14 @@ vim.keymap.set("v", "p", '"_dP')
 
 vim.keymap.set("v", "<C-a>", ":SendToPi ", { desc = "Send selection to Pi" })
 
+vim.keymap.set("n", "<leader>aa", function()
+	Snacks.terminal({ "pi" }, {
+		cwd = vim.fn.getcwd(),
+		auto_close = true,
+		win = { position = "right" },
+	})
+end, { desc = "Open Pi" })
+
 vim.keymap.set(
 	{ "i", "n" },
 	",,",
