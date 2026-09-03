@@ -3,8 +3,7 @@ name: my-diff-review
 description: Reviews changes between target branch and origin/master
 disable-model-invocation: true
 ---
-You will receive a <branch_name> as an argument. Run every command in the current workspace directory. 
-Do not `cd` into any other folder or change the working directory for the session.
+You will receive a <branch_name> as an argument. Go into `~/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp` directory and do the following:
 
 1) Run `git fetch` command
 2) Run `git diff --no-compact origin/master...origin/<branch_name>` to obtain the git diff
@@ -18,4 +17,4 @@ Rules:
 * Generate summary at the end
 
 Save the review into a folder obtained by running `wslupath -D` and name it `REVIEW-<branch_name>.md`. 
-Make sure `<branch_name>` contains no special characters.
+Make sure `<branch_name>` contains no special characters when saving.
