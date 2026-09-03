@@ -197,7 +197,7 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 		opts.args
 	)
 
-	Snacks.terminal({ "pi", prompt }, {
+	Snacks.terminal({ "pi", "--name", opts.args, prompt }, {
 		cwd = vim.fn.getcwd(),
 		auto_close = true,
 		win = { position = "right" },
