@@ -208,5 +208,5 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 end, {
 	nargs = "+",
 	range = true,
-	desc = "Send visible or selected context to pi",
+	desc = "Send selected context to pi",
 })
