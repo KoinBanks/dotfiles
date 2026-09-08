@@ -183,22 +183,42 @@ vim.api.nvim_create_user_command("PickChezmoi", function()
 end, {})
 
 vim.api.nvim_create_user_command("SendToPi", function(opts)
-	local line1, line2 = vim.fn.line("w0"), vim.fn.line("w$")
-	if opts.range > 0 then
-		line1, line2 = opts.line1, opts.line2
+	local raw = opts.args == "xx" or opts.args:match("^xx%s") ~= nil
+	local query = raw and opts.args:gsub("^xx%s*", "", 1) or opts.args
+	local prompt
+
+	if raw then
+		local selection = vim.fn.getregion(
+			vim.fn.getpos("'<"),
+			vim.fn.getpos("'>"),
+			{ type = vim.fn.visualmode() }
+		)
+		prompt = "```"
+			.. vim.bo.filetype
+			.. "\n"
+			.. table.concat(selection, "\n")
+			.. "\n```"
+		if query ~= "" then
+			prompt = prompt .. "\n\n" .. query
+		end
+	else
+		local line1, line2 = vim.fn.line("w0"), vim.fn.line("w$")
+		if opts.range > 0 then
+			line1, line2 = opts.line1, opts.line2
+		end
+
+		local file = vim.fn.expand("%:p")
+		prompt = ("Read lines `%d-%d` of file `%s` and use them as context for the following query: %s"):format(
+			line1,
+			line2,
+			file,
+			query
+		)
 	end
 
-	local file = vim.fn.expand("%:p")
-
-	local prompt = ("Read lines `%d-%d` of file `%s` and use them as context for the following query: %s"):format(
-		line1,
-		line2,
-		file,
-		opts.args
-	)
-
-	local session_name = opts.args:sub(1, 30)
-		.. (opts.args:len() > 30 and "..." or "")
+	local max_chars = 30
+	local session_name = query:sub(1, max_chars)
+		.. (query:len() > max_chars and "..." or "")
 
 	Snacks.terminal({ "pi", "--name", session_name, prompt }, {
 		cwd = vim.fn.getcwd(),
