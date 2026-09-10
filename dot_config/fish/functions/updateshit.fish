@@ -1,4 +1,12 @@
 function updateshit
+    if status is-interactive
+        sudo -v; or return 1
+    end
+
+		bunx skills update -g
+    pi update
+    pi update --extensions
+
     # Save files changed by previous update before applying repo changes.
     chezmoi add ~/.pi/agent/settings.json ~/.agents/.skill-lock.json
     chezmoi update
@@ -12,11 +20,4 @@ function updateshit
 
     brew update
     brew upgrade -y
-
-    bunx skills update -g
-
-    pi update
-    pi update --extensions
-
-    chezmoi add ~/.pi/agent/settings.json ~/.agents/.skill-lock.json
 end
