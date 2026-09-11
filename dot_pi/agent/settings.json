@@ -8,7 +8,6 @@
   "theme": "dark",
   "packages": [
     "npm:pi-web-access",
-    "npm:@xynogen/pix-optimizer",
-    "npm:@ff-labs/pi-fff"
+    "npm:@xynogen/pix-optimizer"
   ]
 }
