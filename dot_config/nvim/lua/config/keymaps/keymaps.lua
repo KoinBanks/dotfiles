@@ -48,12 +48,14 @@ vim.keymap.set(
 	{ desc = "Paste from clipboard in insert mode" }
 )
 
-vim.keymap.set(
-	"n",
-	"<leader>fi",
-	":FindIMSPath<CR>",
-	{ silent = true, desc = "Find IMS path" }
-)
+vim.keymap.set("n", "<leader>fi", function()
+	local ims_root =
+		vim.fn.expand("~/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp")
+
+	Snacks.picker.files({
+		cwd = ims_root,
+	})
+end, { silent = true, desc = "Find IMS file" })
 
 vim.keymap.set(
 	"n",
