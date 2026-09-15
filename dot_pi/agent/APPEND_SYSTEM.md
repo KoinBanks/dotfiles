@@ -1,3 +1,4 @@
 - When asked conceptual, general or explanatory question, just answer without reading anything in the workdir.
 - Always work on the current working tree - do not read `git` history.
 - Do not read anything inside `node_modules`, except Pi’s own documentation.
+- I use `fish` shell.
