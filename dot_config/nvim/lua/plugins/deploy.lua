@@ -59,7 +59,10 @@ return {
 					rewrite = function(context)
 						local skip_extensions = { "ts", "lock", "sh", "md", "java" }
 
-						if context.source:find("/node_modules/") then
+						if
+							context.source:find("/node_modules/")
+							or context.source:find("/build2/")
+						then
 							return false
 						end
 
