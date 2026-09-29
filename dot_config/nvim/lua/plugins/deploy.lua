@@ -82,6 +82,10 @@ return {
 			},
 			hosts = {
 				{
+					address = "wstudio-ref.mstep",
+					label = "WS REF DEV",
+				},
+				{
 					address = "ims@46.224.9.12",
 					label = "Hetzner Weather Studio DEV",
 					rewrite = function(context)
