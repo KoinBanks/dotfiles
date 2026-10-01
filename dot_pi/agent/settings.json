@@ -1,6 +1,6 @@
 {
   "$schema": "./settings.schema.json",
-  "lastChangelogVersion": "0.87.1",
+  "lastChangelogVersion": "0.99.2",
   "defaultProvider": "github-copilot",
   "defaultModel": "gpt-6-luna",
   "defaultThinkingLevel": "high",
