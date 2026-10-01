@@ -183,48 +183,52 @@ vim.api.nvim_create_user_command("PickChezmoi", function()
 end, {})
 
 vim.api.nvim_create_user_command("SendToPi", function(opts)
-	local raw = opts.args == "xx" or opts.args:match("^xx%s") ~= nil
-	local query = raw and opts.args:gsub("^xx%s*", "", 1) or opts.args
-	local prompt
+	local query = opts.args
+	-- ponytail: Read the effort flag only at the start of the command.
+	local effort_levels = {
+		["-l"] = "low",
+		["-m"] = "medium",
+		["-h"] = "high",
+		["-x"] = "xhigh",
+		["-max"] = "max",
+	}
+	local effort_flag, rest = query:match("^(%-[%w]+)%s+(.+)$")
+	local effort = effort_levels[effort_flag] or "high"
 
-	if raw then
-		local selection = vim.fn.getregion(
-			vim.fn.getpos("'<"),
-			vim.fn.getpos("'>"),
-			{ type = vim.fn.visualmode() }
-		)
-		prompt = "```"
-			.. vim.bo.filetype
-			.. "\n"
-			.. table.concat(selection, "\n")
-			.. "\n```"
-		if query ~= "" then
-			prompt = prompt .. "\n\n" .. query
-		end
-	else
-		local line1, line2 = vim.fn.line("w0"), vim.fn.line("w$")
-		if opts.range > 0 then
-			line1, line2 = opts.line1, opts.line2
-		end
-
-		local file = vim.fn.expand("%:p")
-		prompt = ("Read lines `%d-%d` of file `%s` and use them as context for the following query: %s"):format(
-			line1,
-			line2,
-			file,
-			query
-		)
+	if effort_flag and effort_levels[effort_flag] then
+		query = rest
 	end
+
+	if query == "" then
+		vim.notify("SendToPi requires a query", vim.log.levels.ERROR)
+		return
+	end
+
+	local line1, line2 = vim.fn.line("w0"), vim.fn.line("w$")
+	if opts.range > 0 then
+		line1, line2 = opts.line1, opts.line2
+	end
+
+	local file = vim.fn.expand("%:p")
+	local prompt = ("Read lines `%d-%d` of file `%s` and use them as context for the following query: %s"):format(
+		line1,
+		line2,
+		file,
+		query
+	)
 
 	local max_chars = 30
 	local session_name = query:sub(1, max_chars)
 		.. (query:len() > max_chars and "..." or "")
 
-	Snacks.terminal({ "pi", "--name", session_name, prompt }, {
-		cwd = vim.fn.getcwd(),
-		auto_close = true,
-		win = { position = "right" },
-	})
+	Snacks.terminal(
+		{ "pi", "--name", session_name, "--thinking", effort, prompt },
+		{
+			cwd = vim.fn.getcwd(),
+			auto_close = true,
+			win = { position = "right" },
+		}
+	)
 end, {
 	nargs = "+",
 	range = true,
