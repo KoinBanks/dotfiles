@@ -184,7 +184,6 @@ end, {})
 
 vim.api.nvim_create_user_command("SendToPi", function(opts)
 	local query = opts.args
-	-- ponytail: Read the effort flag only at the start of the command.
 	local effort_levels = {
 		["-l"] = "low",
 		["-m"] = "medium",
@@ -192,10 +191,19 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 		["-x"] = "xhigh",
 		["-max"] = "max",
 	}
-	local effort_flag, rest = query:match("^(%-[%w]+)%s+(.+)$")
-	local effort = effort_levels[effort_flag] or "high"
+	local effort, sole = "high", false
+	query = query:gsub("^%s+", "")
 
-	if effort_flag and effort_levels[effort_flag] then
+	-- ponytail: Parse recognized flags only at the start; move to explicit option syntax if flags need to follow the query.
+	while true do
+		local flag, rest = query:match("^(%S+)%s*(.*)$")
+		if effort_levels[flag] then
+			effort = effort_levels[flag]
+		elseif flag == "-s" then
+			sole = true
+		else
+			break
+		end
 		query = rest
 	end
 
@@ -221,14 +229,22 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 	local session_name = query:sub(1, max_chars)
 		.. (query:len() > max_chars and "..." or "")
 
-	Snacks.terminal(
-		{ "pi", "--name", session_name, "--thinking", effort, prompt },
-		{
-			cwd = vim.fn.getcwd(),
-			auto_close = true,
-			win = { position = "right" },
-		}
-	)
+	local args = { "pi", "--name", session_name, "--thinking", effort }
+
+	if sole then
+		table.insert(args, "--append-system-prompt")
+		table.insert(
+			args,
+			"Work solely on the mentioned lines, do not read additional context"
+		)
+	end
+	table.insert(args, prompt)
+
+	Snacks.terminal(args, {
+		cwd = vim.fn.getcwd(),
+		auto_close = true,
+		win = { position = "right" },
+	})
 end, {
 	nargs = "+",
 	range = true,
