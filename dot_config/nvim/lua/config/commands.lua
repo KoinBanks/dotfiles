@@ -218,7 +218,7 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 	end
 
 	local file = vim.fn.expand("%:p")
-	local prompt = ("Read lines `%d-%d` of file `%s` and use them as context for the following query: %s"):format(
+	local prompt = ("Read lines `%d-%d` (1-based) of file `%s` and use them as context for the following query: %s"):format(
 		line1,
 		line2,
 		file,
