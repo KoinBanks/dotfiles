@@ -55,6 +55,14 @@ vim.keymap.set("n", "<leader>fi", function()
 	Snacks.picker.files({
 		cwd = ims_root,
 	})
+end, { silent = true, desc = "Find webapp file" })
+
+vim.keymap.set("n", "<leader>fI", function()
+	local ims_root = vim.fn.expand("~/develop/repos/mis/sw/ims/ims4")
+
+	Snacks.picker.files({
+		cwd = ims_root,
+	})
 end, { silent = true, desc = "Find IMS file" })
 
 vim.keymap.set(
