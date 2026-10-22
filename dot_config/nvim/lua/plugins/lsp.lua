@@ -32,6 +32,7 @@ return {
 				"toml",
 				"regex",
 				"editorconfig",
+				"java",
 			})
 		end,
 	},
