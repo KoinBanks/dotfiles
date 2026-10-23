@@ -28,6 +28,14 @@ vim.keymap.set("n", "<leader>ac", function()
 	})
 end, { desc = "Continue last pi session" })
 
+vim.keymap.set("n", "<leader>ar", function()
+	Snacks.terminal({ "pi", "-r" }, {
+		cwd = vim.fn.getcwd(),
+		auto_close = true,
+		win = { position = "right" },
+	})
+end, { desc = "Resume pi session" })
+
 vim.keymap.set(
 	{ "i", "n" },
 	",,",
