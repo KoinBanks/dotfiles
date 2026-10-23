@@ -20,6 +20,14 @@ vim.keymap.set("n", "<leader>aa", function()
 	})
 end, { desc = "Open Pi" })
 
+vim.keymap.set("n", "<leader>ac", function()
+	Snacks.terminal({ "pi", "-c" }, {
+		cwd = vim.fn.getcwd(),
+		auto_close = true,
+		win = { position = "right" },
+	})
+end, { desc = "Continue last pi session" })
+
 vim.keymap.set(
 	{ "i", "n" },
 	",,",
