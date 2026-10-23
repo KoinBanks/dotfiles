@@ -5,7 +5,7 @@ function wsdev2
     end
 
     tmux new-session -d -s wsdev \
-        "bun --cwd=/home/patrik/develop/repos/ims-proxy start --webapp-dir /home/patrik/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp --upstream $argv[1]"
+        "bun --cwd=/home/patrik/develop/repos/ims-proxy start --webapp-dir ~/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp --append-cache-paths GetCapabilities getPermissions dictio getWebWSConfig --upstream $argv[1]"
     tmux split-window -t wsdev \
         "$build_command"
     tmux set-window-option -t wsdev synchronize-panes on
