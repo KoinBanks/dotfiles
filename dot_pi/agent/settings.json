@@ -8,7 +8,6 @@
   "theme": "dark",
   "packages": [
     "npm:pi-web-access",
-    "npm:@juicesharp/rpiv-ask-user-question",
     "npm:@xynogen/pix-optimizer"
   ]
 }
