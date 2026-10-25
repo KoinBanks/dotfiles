@@ -102,6 +102,14 @@ return {
 					label = "Bosna 1025 DEV",
 				},
 				{
+					address = "10.111.10.71",
+					label = "Moldova 1364 DEV",
+				},
+				{
+					address = "10.201.109.164",
+					label = "Moldova 1364 PROD",
+				},
+				{
 					address = "172.18.2.24",
 					label = "SHMU DEV",
 				},
