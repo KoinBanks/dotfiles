@@ -161,7 +161,7 @@ return {
 			})
 
 			vim.lsp.config("tsrs", {
-				cmd = { "tsrs", "--lsp", "-stdio" }, -- or the absolute path to target/release/tsrs
+				cmd = { "tsrs", "--lsp", "-stdio" },
 				filetypes = {
 					"typescript",
 					"typescriptreact",
