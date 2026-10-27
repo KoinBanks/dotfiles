@@ -56,7 +56,7 @@ return {
 					"lua_ls",
 					-- "vue_ls",
 					"fish_lsp",
-					"vtsls",
+					-- "vtsls",
 					"stylua",
 					"jsonls",
 					-- "tsc",
@@ -83,41 +83,41 @@ return {
 			-- 	configNamespace = "typescript",
 			-- }
 
-			vim.lsp.config("vtsls", {
-				filetypes = ts_filetypes,
-				root_dir = function(bufnr, on_dir)
-					local root_markers = {
-						"package.json",
-						"bunfig.toml",
-					}
-
-					local project_root = vim.fs.root(bufnr, root_markers)
-
-					on_dir(project_root or vim.fn.getcwd())
-				end,
-				---@type lspconfig.settings.vtsls
-				settings = {
-					vtsls = {
-						autoUseWorkspaceTsdk = true,
-						experimental = {
-							completion = {
-								enableServerSideFuzzyMatch = true,
-							},
-						},
-						-- tsserver = {
-						-- 	globalPlugins = {
-						-- 		vue_plugin,
-						-- 	},
-						-- },
-					},
-					javascript = {
-						suggest = {
-							names = false,
-							autoImports = false,
-						},
-					},
-				},
-			})
+			-- vim.lsp.config("vtsls", {
+			-- 	filetypes = ts_filetypes,
+			-- 	root_dir = function(bufnr, on_dir)
+			-- 		local root_markers = {
+			-- 			"package.json",
+			-- 			"bunfig.toml",
+			-- 		}
+			--
+			-- 		local project_root = vim.fs.root(bufnr, root_markers)
+			--
+			-- 		on_dir(project_root or vim.fn.getcwd())
+			-- 	end,
+			-- 	---@type lspconfig.settings.vtsls
+			-- 	settings = {
+			-- 		vtsls = {
+			-- 			autoUseWorkspaceTsdk = true,
+			-- 			experimental = {
+			-- 				completion = {
+			-- 					enableServerSideFuzzyMatch = true,
+			-- 				},
+			-- 			},
+			-- 			-- tsserver = {
+			-- 			-- 	globalPlugins = {
+			-- 			-- 		vue_plugin,
+			-- 			-- 	},
+			-- 			-- },
+			-- 		},
+			-- 		javascript = {
+			-- 			suggest = {
+			-- 				names = false,
+			-- 				autoImports = false,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
 
 			-- vim.lsp.config("tsgo", {
 			-- 	root_dir = function(bufnr, on_dir)
@@ -159,6 +159,22 @@ return {
 					},
 				},
 			})
+
+			vim.lsp.config("tsrs", {
+				cmd = { "tsrs", "--lsp", "-stdio" }, -- or the absolute path to target/release/tsrs
+				filetypes = {
+					"typescript",
+					"typescriptreact",
+					"javascript",
+					"javascriptreact",
+				},
+				root_markers = {
+					"tsconfig.json",
+					"jsconfig.json",
+					"package.json",
+				},
+			})
+			vim.lsp.enable("tsrs")
 		end,
 	},
 }
