@@ -174,6 +174,7 @@ return {
 					"package.json",
 				},
 			})
+
 			vim.lsp.enable("tsrs")
 		end,
 	},
