@@ -54,83 +54,12 @@ return {
 					"oxfmt",
 					"html",
 					"lua_ls",
-					-- "vue_ls",
 					"fish_lsp",
-					-- "vtsls",
 					"stylua",
 					"jsonls",
-					-- "tsc",
-					-- "tsgo",
+					-- "vtsls",
 				},
 			})
-
-			-- local vue_language_server_path = vim.fn.expand("$MASON/packages")
-			-- 	.. "/vue-language-server"
-			-- 	.. "/node_modules/@vue/language-server"
-			--
-			local ts_filetypes = {
-				"typescript",
-				"javascript",
-				"javascriptreact",
-				"typescriptreact",
-				"vue",
-			}
-
-			-- local vue_plugin = {
-			-- 	name = "@vue/typescript-plugin",
-			-- 	location = vue_language_server_path,
-			-- 	languages = { "vue" },
-			-- 	configNamespace = "typescript",
-			-- }
-
-			-- vim.lsp.config("vtsls", {
-			-- 	filetypes = ts_filetypes,
-			-- 	root_dir = function(bufnr, on_dir)
-			-- 		local root_markers = {
-			-- 			"package.json",
-			-- 			"bunfig.toml",
-			-- 		}
-			--
-			-- 		local project_root = vim.fs.root(bufnr, root_markers)
-			--
-			-- 		on_dir(project_root or vim.fn.getcwd())
-			-- 	end,
-			-- 	---@type lspconfig.settings.vtsls
-			-- 	settings = {
-			-- 		vtsls = {
-			-- 			autoUseWorkspaceTsdk = true,
-			-- 			experimental = {
-			-- 				completion = {
-			-- 					enableServerSideFuzzyMatch = true,
-			-- 				},
-			-- 			},
-			-- 			-- tsserver = {
-			-- 			-- 	globalPlugins = {
-			-- 			-- 		vue_plugin,
-			-- 			-- 	},
-			-- 			-- },
-			-- 		},
-			-- 		javascript = {
-			-- 			suggest = {
-			-- 				names = false,
-			-- 				autoImports = false,
-			-- 			},
-			-- 		},
-			-- 	},
-			-- })
-
-			-- vim.lsp.config("tsgo", {
-			-- 	root_dir = function(bufnr, on_dir)
-			-- 		local root_markers = {
-			-- 			"package.json",
-			-- 			"bunfig.toml",
-			-- 		}
-			--
-			-- 		local project_root = vim.fs.root(bufnr, root_markers)
-			--
-			-- 		on_dir(project_root or vim.fn.getcwd())
-			-- 	end,
-			-- })
 
 			vim.lsp.config("lua_ls", {
 				---@type lspconfig.settings.lua_ls
@@ -176,6 +105,57 @@ return {
 			})
 
 			vim.lsp.enable("tsrs")
+
+			-- local ts_filetypes = {
+			-- 	"typescript",
+			-- 	"javascript",
+			-- 	"javascriptreact",
+			-- 	"typescriptreact",
+			-- 	"vue",
+			-- }
+
+			-- local vue_plugin = {
+			-- 	name = "@vue/typescript-plugin",
+			-- 	location = vue_language_server_path,
+			-- 	languages = { "vue" },
+			-- 	configNamespace = "typescript",
+			-- }
+
+			-- vim.lsp.config("vtsls", {
+			-- 	filetypes = ts_filetypes,
+			-- 	root_dir = function(bufnr, on_dir)
+			-- 		local root_markers = {
+			-- 			"package.json",
+			-- 			"bunfig.toml",
+			-- 		}
+			--
+			-- 		local project_root = vim.fs.root(bufnr, root_markers)
+			--
+			-- 		on_dir(project_root or vim.fn.getcwd())
+			-- 	end,
+			-- 	---@type lspconfig.settings.vtsls
+			-- 	settings = {
+			-- 		vtsls = {
+			-- 			autoUseWorkspaceTsdk = true,
+			-- 			experimental = {
+			-- 				completion = {
+			-- 					enableServerSideFuzzyMatch = true,
+			-- 				},
+			-- 			},
+			-- 			-- tsserver = {
+			-- 			-- 	globalPlugins = {
+			-- 			-- 		vue_plugin,
+			-- 			-- 	},
+			-- 			-- },
+			-- 		},
+			-- 		javascript = {
+			-- 			suggest = {
+			-- 				names = false,
+			-- 				autoImports = false,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
 		end,
 	},
 }
