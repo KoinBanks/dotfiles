@@ -8,6 +8,7 @@ function wsdev2
     tmux new-session -d -s wsdev \
         "bun --cwd=/home/patrik/develop/repos/ims-proxy \
         start --webapp-dir ~/develop/repos/mis/sw/ims/ims4/Web/src/main/webapp \
+				--cache-clear-interval-minutes 20 \
         --append-cache-paths GetCapabilities getPermissions dictio getWebWSConfig getStyledCss X2OJsGenerator \
         --upstream $argv[1]"
     tmux split-window -t wsdev "$build_command"
