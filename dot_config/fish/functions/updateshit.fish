@@ -3,6 +3,7 @@ function updateshit
         sudo -v; or return 1
     end
 
+		bun install -g tsrs
 		bunx skills update -g
     pi update
     pi update --extensions
