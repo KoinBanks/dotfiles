@@ -3,22 +3,22 @@ function updateshit
         sudo -v; or return 1
     end
 
-		bun install -g tsrs
-		bunx skills update -g
-    pi update
-    pi update --extensions
+    chezmoi update; or return
 
-    # Save files changed by previous update before applying repo changes.
-    chezmoi add ~/.pi/agent/settings.json ~/.agents/.skill-lock.json
-    chezmoi update
+    bun install -g tsrs; or return
+
+    pi update; or return
+    pi update --extensions; or return
+
+    chezmoi add ~/.pi/agent/settings.json; or return
 
     if status is-interactive
-        sudo apt update
-        sudo apt upgrade -y
+        sudo apt update; or return
+        sudo apt upgrade -y; or return
     else
         echo "Skipping apt updates: sudo needs interactive terminal."
     end
 
-    brew update
-    brew upgrade -y
+    brew update; or return
+    brew upgrade; or return
 end
