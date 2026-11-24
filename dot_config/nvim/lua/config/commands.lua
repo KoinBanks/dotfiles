@@ -191,7 +191,7 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 		["-x"] = "xhigh",
 		["-max"] = "max",
 	}
-	local effort, sole = "high", false
+	local effort, sole, include_diagnostics = "high", false, false
 	query = query:gsub("^%s+", "")
 
 	-- ponytail: Parse recognized flags only at the start; move to explicit option syntax if flags need to follow the query.
@@ -201,6 +201,8 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 			effort = effort_levels[flag]
 		elseif flag == "-s" then
 			sole = true
+		elseif flag == "-d" then
+			include_diagnostics = true
 		else
 			break
 		end
@@ -224,6 +226,22 @@ vim.api.nvim_create_user_command("SendToPi", function(opts)
 		file,
 		query
 	)
+	if include_diagnostics then
+		local messages = {}
+		for _, diagnostic in ipairs(vim.diagnostic.get(0)) do
+			if diagnostic.lnum >= line1 - 1 and diagnostic.lnum < line2 then
+				table.insert(
+					messages,
+					("- Line %d: %s"):format(diagnostic.lnum + 1, diagnostic.message)
+				)
+			end
+		end
+		local diagnostics = #messages > 0 and table.concat(messages, "\n")
+			or "(none)"
+		prompt = prompt
+			.. "\n\nDiagnostics for the selected range:\n"
+			.. diagnostics
+	end
 
 	local max_chars = 30
 	local session_name = query:sub(1, max_chars)
