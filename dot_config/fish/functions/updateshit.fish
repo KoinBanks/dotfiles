@@ -9,6 +9,7 @@ function updateshit
 
     pi update; or return
     pi update --extensions; or return
+    pi --print --no-tools --no-session "Reply with OK."; or return
 
     chezmoi add ~/.pi/agent/settings.json; or return
 
